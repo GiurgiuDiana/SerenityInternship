@@ -14,8 +14,7 @@ public class CheckoutAsUserSteps {
     OrderReviewPage orderReviewPage;
 
     @Step
-    public void userIsOnCheckoutPage()
-    {
+    public void userIsOnCheckoutPage() {
         billingPage.open();
     }
 
@@ -45,8 +44,7 @@ public class CheckoutAsUserSteps {
     }
 
     @Step
-    public void orderReviewPage()
-    {
+    public void orderReviewPage() {
         orderReviewPage.pressPlaceOrder();
     }
 

@@ -2,6 +2,7 @@ package steps;
 
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 import pages.HeaderPage;
 import pages.LoginPage;
@@ -9,7 +10,8 @@ import tools.Constants;
 
 public class LoginSteps {
 
-    public LoginSteps(){}
+    public LoginSteps() {
+    }
 
     private HeaderPage headerPage;
     private LoginPage loginPage;
@@ -31,14 +33,21 @@ public class LoginSteps {
     }
 
     @Step
-    public void fillingLoginRequiredFields(){
+    public void fillingLoginRequiredFields() {
         loginPage.inputEmailValueInField();
         loginPage.inputPasswordValueInField();
         loginPage.pressLoginButton();
     }
 
     @Step
-    public void shouldBeOnTheAccountPage(){
+    public void shouldBeOnTheAccountPage() {
         Assert.assertTrue(loginPage.containsText(Constants.USER_NAME));
+    }
+
+    @StepGroup
+    public void performLogin(){
+        isOnHomepage();
+        reachLoginFromHomepage();
+        fillingLoginRequiredFields();
     }
 }

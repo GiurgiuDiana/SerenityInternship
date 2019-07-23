@@ -1,14 +1,15 @@
 package pages;
 
 
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.support.FindBy;
 
 
 import java.util.List;
 
+@DefaultUrl("http://qa1.dev.evozon.com/plaid-cotton-shirt-577.html")
 public class ProductDetailsPage extends PageObject {
 
     @FindBy(css = "#msrp-popup-553oWeJzVVjR2rtBHnvB8Di")
@@ -26,7 +27,8 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(css = "#configurable_swatch_size>li")
     private List<WebElementFacade> sizeList;
 
-    public void getColors(){
+    public List<WebElementFacade> getColors() {
+        return colorsList;
 
     }
 

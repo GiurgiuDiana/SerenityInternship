@@ -4,13 +4,13 @@ public class ConfigurableProduct extends Product {
     private String color;
     private Integer size;
 
-    public ConfigurableProduct(String name, Double price, String color, Integer size){
+    public ConfigurableProduct(String name, Double price, String color, Integer size) {
         super(name, price);
         this.color = color;
         this.size = size;
     }
 
-    public ConfigurableProduct(){
+    public ConfigurableProduct() {
         super();
     }
 

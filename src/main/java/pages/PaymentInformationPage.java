@@ -26,8 +26,7 @@ public class PaymentInformationPage extends PageObject {
         return paymentMessage;
     }
 
-    public void pressContinue()
-    {
+    public void pressContinue() {
         continuePaymentInformation.click();
     }
 }
