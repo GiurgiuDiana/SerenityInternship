@@ -26,5 +26,8 @@ public class CheckoutAsUserTest extends BaseTest
         checkoutAsUserSteps.userIsOnCheckoutPage();
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();
+        checkoutAsUserSteps.chooseShippingMethod();
+        checkoutAsUserSteps.paymentInformation();
+        checkoutAsUserSteps.orderReviewPage();
     }
 }

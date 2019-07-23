@@ -35,21 +35,24 @@ public class ShippingMethodPage extends PageObject {
     private int shiipingChoice;
 
     public WebElementFacade getShippingMessage() {
+
+        shippingMessage.waitUntilVisible();
         return shippingMessage;
     }
 
     public void selectShippingType(int index)
     {
-        if(index==1)
-        {
+//        if(index==1)
+//        {
+            radioButtonFreeShipping.waitUntilClickable();
             radioButtonFreeShipping.click();
             shiipingChoice=1;
-        }
-        else
-        {
-            radioButtonFlateRateShipping.click();
-            shiipingChoice=2;
-        }
+//        }
+//        else
+//        {
+//            radioButtonFlateRateShipping.click();
+//            shiipingChoice=2;
+//        }
     }
 
     public void selectGiftOption()
@@ -65,6 +68,7 @@ public class ShippingMethodPage extends PageObject {
     public void fillInShippingMethod(int index)
     {
         selectShippingType(index);
+        System.out.println("am trecut si de asta  ");
         pressContinue();
     }
 

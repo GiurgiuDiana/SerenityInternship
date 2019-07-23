@@ -22,7 +22,7 @@ public class BillingPage extends PageObject {
     @FindBy(css = "#billing-buttons-container >button")
     private WebElementFacade continueBillingButton;
 
-    @FindBy(css = "#opc-shipping")
+    @FindBy(css = "#opc-shipping .step-title a")
     private WebElementFacade toShippingButton;
 
     private String address;
