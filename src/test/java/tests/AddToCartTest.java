@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import steps.ProductDetailsSteps;
 import steps.ProductListSteps;
 
 @RunWith(SerenityRunner.class)
@@ -17,10 +18,19 @@ public class AddToCartTest {
     @Steps
     ProductListSteps productListSteps;
 
+    @Steps
+    ProductDetailsSteps productDetailsSteps;
+
     @Test
     public void displayProductsFoundTest(){
         productListSteps.openPage();
         productListSteps.getAllProducts();
         productListSteps.navigateToRandomProduct();
+    }
+
+    @Test
+    public void configurationsTest(){
+        productDetailsSteps.openPage();
+        productDetailsSteps.clickRandomColor();
     }
 }
