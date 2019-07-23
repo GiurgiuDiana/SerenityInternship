@@ -1,7 +1,6 @@
 package pages;
 
 
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
@@ -26,7 +25,7 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(css = "#configurable_swatch_size>li")
     private List<WebElementFacade> sizeList;
 
-    public void getColors(){
+    public void getColors() {
 
     }
 

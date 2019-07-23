@@ -18,7 +18,7 @@ public class AddToCartTest {
     ProductListSteps productListSteps;
 
     @Test
-    public void displayProductsFoundTest(){
+    public void displayProductsFoundTest() {
         productListSteps.openPage();
         productListSteps.getAllProducts();
         productListSteps.navigateToRandomProduct();

@@ -19,8 +19,7 @@ public class OrderReviewPage extends PageObject {
         return checkPaymentInformation;
     }
 
-    public void pressPlaceOrder()
-    {
+    public void pressPlaceOrder() {
         buttonPlaceOrder.click();
     }
 }

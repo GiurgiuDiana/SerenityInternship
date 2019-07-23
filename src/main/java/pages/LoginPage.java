@@ -9,7 +9,7 @@ import tools.Constants;
 @DefaultUrl("http://qa1.dev.evozon.com/")
 public class LoginPage extends PageObject {
 
-    public LoginPage (){
+    public LoginPage() {
         super();
     }
 
@@ -22,15 +22,15 @@ public class LoginPage extends PageObject {
     @FindBy(css = "button[title='Login']")
     private WebElementFacade loginButton;
 
-    public void inputEmailValueInField(){
+    public void inputEmailValueInField() {
         emailAddressField.waitUntilVisible().sendKeys(Constants.USER_EMAIL);
     }
 
-    public void inputPasswordValueInField(){
+    public void inputPasswordValueInField() {
         passwordField.waitUntilVisible().sendKeys(Constants.USER_PASS);
     }
 
-    public void pressLoginButton(){
+    public void pressLoginButton() {
         loginButton.waitUntilClickable().click();
     }
 }

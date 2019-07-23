@@ -35,20 +35,18 @@ public class BillingPage extends PageObject {
         selectBillingAddress.get(index).click();
         address = selectBillingAddress.get(index).getText();
     }
-    public void selectShippingAddress(int index)
-    {
-        if(index==1) {
+
+    public void selectShippingAddress(int index) {
+        if (index == 1) {
             radioShipToThisAddress.click();
             shippTo = 1;
-        }
-        else
-        {
+        } else {
             radioShipToDifferentAddress.click();
             shippTo = 2;
         }
     }
-    public void pressContinueBilling()
-    {
+
+    public void pressContinueBilling() {
         continueBillingButton.click();
     }
 

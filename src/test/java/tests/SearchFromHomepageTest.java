@@ -18,7 +18,7 @@ public class SearchFromHomepageTest {
     public SearchPageSteps searchPageSteps;
 
     @Test
-    public void searchingForAGivenProduct(){
+    public void searchingForAGivenProduct() {
         searchPageSteps.isOnHomepage();
         searchPageSteps.fillingSearchField();
         searchPageSteps.shouldBeOnSearchResultsPage();

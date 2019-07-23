@@ -9,7 +9,8 @@ import tools.Constants;
 
 public class LoginSteps {
 
-    public LoginSteps(){}
+    public LoginSteps() {
+    }
 
     private HeaderPage headerPage;
     private LoginPage loginPage;
@@ -31,14 +32,14 @@ public class LoginSteps {
     }
 
     @Step
-    public void fillingLoginRequiredFields(){
+    public void fillingLoginRequiredFields() {
         loginPage.inputEmailValueInField();
         loginPage.inputPasswordValueInField();
         loginPage.pressLoginButton();
     }
 
     @Step
-    public void shouldBeOnTheAccountPage(){
+    public void shouldBeOnTheAccountPage() {
         Assert.assertTrue(loginPage.containsText(Constants.USER_NAME));
     }
 }

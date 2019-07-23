@@ -19,12 +19,12 @@ public class ProductListPage extends PageObject {
     private List<WebElementFacade> productsList;
 
 
-    public List<WebElementFacade> getProductsLinksList(){
+    public List<WebElementFacade> getProductsLinksList() {
         return productsImageList;
     }
 
-    public void goToRandomProductPage(){
-        Integer randomIndex = new Random().nextInt(productsImageList.size()-1);
+    public void goToRandomProductPage() {
+        Integer randomIndex = new Random().nextInt(productsImageList.size() - 1);
         productsImageList.get(randomIndex).click();
     }
 

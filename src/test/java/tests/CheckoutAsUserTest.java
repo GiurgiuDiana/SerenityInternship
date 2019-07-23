@@ -9,8 +9,7 @@ import org.openqa.selenium.WebDriver;
 import steps.CheckoutAsUserSteps;
 
 @RunWith(SerenityRunner.class)
-public class CheckoutAsUserTest
-{
+public class CheckoutAsUserTest {
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -19,8 +18,7 @@ public class CheckoutAsUserTest
     public CheckoutAsUserSteps checkoutAsUserSteps;
 
     @Test
-    public void completeCheckout()
-    {
+    public void completeCheckout() {
         checkoutAsUserSteps.userIsOnCheckoutPage();
         try {
             wait(10000);
