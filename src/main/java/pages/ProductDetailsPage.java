@@ -1,7 +1,6 @@
 package pages;
 
 
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -28,8 +27,9 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(css = "#configurable_swatch_size>li")
     private List<WebElementFacade> sizeList;
 
-    public List<WebElementFacade> getColors(){
+    public List<WebElementFacade> getColors() {
         return colorsList;
+
     }
 
 }

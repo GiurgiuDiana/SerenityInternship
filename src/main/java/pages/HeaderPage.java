@@ -36,7 +36,7 @@ public class HeaderPage extends PageObject {
         registerButton.waitUntilClickable().click();
     }
 
-    public void typeInSearchField(String message){
+    public void typeInSearchField(String message) {
         searchField.clear();
         searchField.sendKeys(message + "\n");
     }

@@ -20,50 +20,43 @@ public class ShippingMethodPage extends PageObject {
     @FindBy(css = "#allow_gift_messages")
     private WebElementFacade buttonEnableGiftOption;
 
-    @FindBy(css=".complete:nth-child(2)")
+    @FindBy(css = ".complete:nth-child(2)")
     private WebElementFacade shippingMessage;
 
-    @FindBy(css="#allow_gift_messages_for_order")
+    @FindBy(css = "#allow_gift_messages_for_order")
     private WebElementFacade giftOptionForOrder;
 
-    @FindBy(css="#allow_gift_messages_for_items")
+    @FindBy(css = "#allow_gift_messages_for_items")
     private WebElementFacade giftOptionForItems;
 
-    @FindBy(css="#shipping-method-buttons-container >button")
+    @FindBy(css = "#shipping-method-buttons-container >button")
     private WebElementFacade continueButtonShippingMethod;
 
-    private int shiipingChoice;
+    private int shippingChoice;
 
     public WebElementFacade getShippingMessage() {
         return shippingMessage;
     }
 
-    public void selectShippingType(int index)
-    {
-        if(index==1)
-        {
+    public void selectShippingType(int index) {
+        if (index == 1) {
             radioButtonFreeShipping.click();
-            shiipingChoice=1;
-        }
-        else
-        {
+            shippingChoice = 1;
+        } else {
             radioButtonFlateRateShipping.click();
-            shiipingChoice=2;
+            shippingChoice = 2;
         }
     }
 
-    public void selectGiftOption()
-    {
+    public void selectGiftOption() {
         buttonEnableGiftOption.click();
     }
 
-    public void pressContinue()
-    {
+    public void pressContinue() {
         continueButtonShippingMethod.click();
     }
 
-    public void fillInShippingMethod(int index)
-    {
+    public void fillInShippingMethod(int index) {
         selectShippingType(index);
         pressContinue();
     }

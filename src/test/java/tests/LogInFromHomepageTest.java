@@ -16,7 +16,7 @@ public class LogInFromHomepageTest extends BaseTest{
     public LoginSteps loginSteps;
 
     @Test
-    public void completingLoginFromHomepage(){
+    public void completingLoginFromHomepage() {
         loginSteps.isOnHomepage();
         loginSteps.reachLoginFromHomepage();
         loginSteps.shouldBeOnTheLoginPage();
