@@ -9,10 +9,7 @@ import org.openqa.selenium.WebDriver;
 import steps.SearchPageSteps;
 
 @RunWith(SerenityRunner.class)
-public class SearchFromHomepageTest {
-
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+public class SearchFromHomepageTest extends BaseTest{
 
     @Steps
     public SearchPageSteps searchPageSteps;
