@@ -5,28 +5,25 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 import steps.CheckoutAsUserSteps;
+import steps.LoginSteps;
+
 
 @RunWith(SerenityRunner.class)
-public class CheckoutAsUserTest
+public class CheckoutAsUserTest extends BaseTest
 {
-
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
-
     @Steps
     public CheckoutAsUserSteps checkoutAsUserSteps;
+    @Steps
+    public LoginSteps loginSteps;
 
     @Test
     public void completeCheckout()
     {
+        loginSteps.isOnHomepage();
+        loginSteps.reachLoginFromHomepage();
+        loginSteps.fillingLoginRequiredFields();
         checkoutAsUserSteps.userIsOnCheckoutPage();
-        try {
-            wait(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();
     }

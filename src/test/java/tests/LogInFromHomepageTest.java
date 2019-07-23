@@ -10,10 +10,7 @@ import org.openqa.selenium.WebDriver;
 import steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
-public class LogInFromHomepageTest {
-
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+public class LogInFromHomepageTest extends BaseTest{
 
     @Steps
     public LoginSteps loginSteps;

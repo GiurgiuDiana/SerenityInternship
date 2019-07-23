@@ -6,16 +6,18 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import steps.LoginSteps;
 import steps.ProductListSteps;
 
 @RunWith(SerenityRunner.class)
-public class AddToCartTest {
+public class AddToCartTest extends BaseTest{
 
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+
 
     @Steps
-    ProductListSteps productListSteps;
+    public ProductListSteps productListSteps;
+    @Steps
+    public LoginSteps loginSteps;
 
     @Test
     public void displayProductsFoundTest(){
