@@ -1,5 +1,6 @@
 package pages;
 
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -7,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @DefaultUrl("http://qa1.dev.evozon.com/checkout/onepage/")
-public class ShippingMethodPage extends BasePage {
+public class ShippingMethodPage extends PageObject {
 
     @FindBy(css = "label[for='s_method_freeshipping_freeshipping']")
     private WebElementFacade radioButtonFreeShipping;
@@ -40,7 +41,7 @@ public class ShippingMethodPage extends BasePage {
 
     public String getShippingMessage() {
         shippingMessage.waitUntilVisible();
-        String message=shippingMessage.getText().replace("\n ,","");
+        String message=shippingMessage.getText().replace("\n",", ");
         //String[] mess=message.split("\n");
         //String endMessage=mess[0]+","+mess[1];
         return message;
