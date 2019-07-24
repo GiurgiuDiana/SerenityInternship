@@ -33,7 +33,9 @@ public class BillingPage extends PageObject {
 
     public void setSelectBillingAddress(int index) {
         selectBillingAddress.get(index).click();
-        address = selectBillingAddress.get(index).getText();
+        List<String>saddress=selectBillingAddress.get(index).getSelectOptions();
+        address=saddress.get(2);
+        System.out.println(address);
     }
 
     public void selectShippingAddress(int index) {
