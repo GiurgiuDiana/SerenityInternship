@@ -43,14 +43,6 @@ public class ShippingMethodPage extends PageObject {
         shippingMessage.waitUntilVisible();
         return shippingMessage;
     }
-
-    public void selectShippingType(int index) {
-        if (index == 1) {
-            radioButtonFreeShipping.click();
-            shippingChoice = 1;
-        } else {
-            radioButtonFlateRateShipping.click();
-            shippingChoice = 2;
     public void selectShippingType(int index) throws Exception {
         for (int i = 0; i <= 20; i++) {
             if (index == 1) {

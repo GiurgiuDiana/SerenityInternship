@@ -5,6 +5,7 @@ public class Product {
     private Double price;
     private int quantity;
 
+
     public Product(String name, Double price, int qty) {
         this.name = name;
         this.price = price;
@@ -37,5 +38,14 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }
