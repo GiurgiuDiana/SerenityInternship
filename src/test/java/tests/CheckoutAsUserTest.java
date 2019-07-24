@@ -22,7 +22,8 @@ public class CheckoutAsUserTest extends BaseTest
         loginSteps.isOnHomepage();
         loginSteps.reachLoginFromHomepage();
         loginSteps.fillingLoginRequiredFields();
-        checkoutAsUserSteps.userIsOnCheckoutPage();
+        loginSteps.goToCheckoutPage();
+     //   checkoutAsUserSteps.userIsOnCheckoutPage();
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();
         checkoutAsUserSteps.chooseShippingMethod();
