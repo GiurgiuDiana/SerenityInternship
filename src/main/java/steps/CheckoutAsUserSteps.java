@@ -4,6 +4,7 @@ package steps;
 import net.thucydides.core.annotations.Step;
 import pages.*;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class CheckoutAsUserSteps {
@@ -32,11 +33,10 @@ public class CheckoutAsUserSteps {
 
     @Step
     public void chooseShippingMethod() throws Exception {
-
-        System.out.println("shipping meth "+shippingMethodPage.getShippingMessage().getText());
-        System.out.println("address "+billingPage.getAddress());
-        assertTrue(billingPage.getAddress().contains(shippingMethodPage.getShippingMessage().getText()));
         shippingMethodPage.fillInShippingMethod(1);
+        System.out.println("shipping meth "+shippingMethodPage.getShippingMessage().toLowerCase().trim());
+        System.out.println("address "+billingPage.getAddress().toLowerCase().trim());
+        assertTrue(shippingMethodPage.getShippingMessage().toLowerCase().trim().contains(billingPage.getAddress().toLowerCase().trim()));
     }
 
     @Step

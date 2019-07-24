@@ -50,4 +50,10 @@ public class LoginSteps {
         reachLoginFromHomepage();
         fillingLoginRequiredFields();
     }
+
+    @Step
+    public void goToCheckoutPage()
+    {
+        headerPage.goToCheckoutPage();
+    }
 }

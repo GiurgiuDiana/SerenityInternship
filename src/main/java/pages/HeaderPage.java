@@ -24,6 +24,15 @@ public class HeaderPage extends PageObject {
     @FindBy(css = "#search")
     private WebElementFacade searchField;
 
+    @FindBy(css=".header-minicart >a")
+    private WebElementFacade minicartButton;
+
+    @FindBy(css=".button.checkout-button")
+    private WebElementFacade minicartCheckoutButton;
+
+    @FindBy(css=".minicart-wrapper")
+    private WebElementFacade minicartMenu;
+
     public void clickOnAccountButton() {
         accountButton.waitUntilClickable().click();
     }
@@ -39,5 +48,24 @@ public class HeaderPage extends PageObject {
     public void typeInSearchField(String message) {
         searchField.clear();
         searchField.sendKeys(message + "\n");
+    }
+
+    public  void clickOnMinicartButton()
+    {
+        minicartButton.click();
+    }
+    public void waitForMinicartMenuToAppear()
+    {
+        minicartMenu.waitUntilVisible();
+    }
+    public void clickMinicartCheckout()
+    {
+        minicartCheckoutButton.click();
+    }
+    public void goToCheckoutPage()
+    {
+        clickOnMinicartButton();
+        waitForMinicartMenuToAppear();
+        clickMinicartCheckout();
     }
 }
