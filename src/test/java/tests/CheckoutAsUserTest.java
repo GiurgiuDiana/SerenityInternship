@@ -18,8 +18,7 @@ public class CheckoutAsUserTest extends BaseTest
     public LoginSteps loginSteps;
 
     @Test
-    public void completeCheckout()
-    {
+    public void completeCheckout() throws Exception {
         loginSteps.isOnHomepage();
         loginSteps.reachLoginFromHomepage();
         loginSteps.fillingLoginRequiredFields();

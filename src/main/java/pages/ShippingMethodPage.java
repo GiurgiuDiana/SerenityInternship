@@ -3,16 +3,20 @@ package pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.support.FindBy;
 
 @DefaultUrl("http://qa1.dev.evozon.com/checkout/onepage/")
 public class ShippingMethodPage extends PageObject {
 
-    @FindBy(css = "#s_method_freeshipping_freeshipping")
+    @FindBy(css = "label[for='s_method_freeshipping_freeshipping']")
     private WebElementFacade radioButtonFreeShipping;
 
     @FindBy(css = "#s_method_flatrate_flatrate")
     private WebElementFacade radioButtonFlateRateShipping;
+
+    @FindBy(css = "#checkout-step-shipping_method")
+    private WebElementFacade shippingMethod;
 
     @FindBy(css = ".gift-messages h3")
     private WebElementFacade giftMessage;
@@ -47,6 +51,21 @@ public class ShippingMethodPage extends PageObject {
         } else {
             radioButtonFlateRateShipping.click();
             shippingChoice = 2;
+    public void selectShippingType(int index) throws Exception {
+        for (int i = 0; i <= 20; i++) {
+            if (index == 1) {
+                try {
+                    radioButtonFreeShipping.waitUntilClickable();
+                    radioButtonFreeShipping.click();
+                    break;
+                } catch (ElementNotInteractableException e) {
+                    Thread.sleep(1000);
+                }
+
+            } else {
+                radioButtonFlateRateShipping.click();
+                shippingChoice = 2;
+            }
         }
     }
 
@@ -55,12 +74,13 @@ public class ShippingMethodPage extends PageObject {
     }
 
     public void pressContinue() {
+        continueButtonShippingMethod.waitUntilClickable();
         continueButtonShippingMethod.click();
     }
 
-    public void fillInShippingMethod(int index) {
+    public void fillInShippingMethod(int index) throws Exception {
+
         selectShippingType(index);
-        System.out.println("am trecut si de asta  ");
         pressContinue();
     }
 
