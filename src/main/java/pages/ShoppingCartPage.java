@@ -2,6 +2,7 @@ package pages;
 
 import models.ConfigurableProduct;
 import models.Product;
+import models.ProductsInCart;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.NoSuchContextException;
@@ -52,4 +53,5 @@ public class ShoppingCartPage {
 //    public ConfigurableProduct createConfigurableProductFromCart(){
 //
 //    }
+
 }
