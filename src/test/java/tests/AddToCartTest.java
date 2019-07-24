@@ -22,7 +22,7 @@ public class AddToCartTest extends BaseTest{
     @Steps
     ProductDetailsSteps productDetailsSteps;
 
-    @Test
+    /*@Test
     public void displayProductsFoundTest() {
         productListSteps.openPage();
         productListSteps.getAllProducts();
@@ -36,7 +36,7 @@ public class AddToCartTest extends BaseTest{
         productDetailsSteps.clickRandomSize();
         productDetailsSteps.setRandomQuantity();
         productDetailsSteps.clickAddToCart();
-    }
+    }*/
 
     @Test
     public void addProductToCartTest(){

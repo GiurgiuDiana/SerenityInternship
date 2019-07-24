@@ -51,7 +51,7 @@ public class ProductDetailsSteps {
     @Step
     public void clickAddToCart(){
         Product productInCart = productDetailsPage.addToCart();
-        Product productInList = Utils.getProduct();
+        Product productInList = Utils.getProductInList();
         System.out.println(productInCart.toString());
         System.out.println("========================================");
         System.out.println(productInList.toString());

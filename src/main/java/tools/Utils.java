@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Utils {
 
-    private static Product product;
+    private static Product productInList;
 
     public static void displayList(List<WebElementFacade> list){
         for(WebElementFacade element: list){
@@ -26,11 +26,11 @@ public class Utils {
         return random+1;
     }
 
-    public static Product getProduct() {
-        return product;
+    public static Product getProductInList() {
+        return productInList;
     }
 
-    public static void setProduct(Product product) {
-        Utils.product = product;
+    public static void setProductInList(Product productInList) {
+        Utils.productInList = productInList;
     }
 }

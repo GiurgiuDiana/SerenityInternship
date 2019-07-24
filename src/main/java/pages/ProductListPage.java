@@ -4,7 +4,6 @@ package pages;
 import models.Product;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -54,8 +53,8 @@ public class ProductListPage extends PageObject {
         }
 
         Product product = new Product(productName, productPrice, 1);
-        Utils.setProduct(product);
-        System.out.println(Utils.getProduct().toString());
+        Utils.setProductInList(product);
+        System.out.println(Utils.getProductInList().toString());
 
 
         productsImageList.get(randomIndex).click();
