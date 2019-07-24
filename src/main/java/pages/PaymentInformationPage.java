@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 @DefaultUrl("http://qa1.dev.evozon.com/checkout/onepage/")
 public class PaymentInformationPage extends PageObject {
 
-    @FindBy(css = "#shipping_method-progress-opcheckout .complete:nth-child(2) .price")
-    private WebElementFacade shippingPriceCheck;
 
     @FindBy(css = "#dt_method_cashondelivery")
     private WebElementFacade paymentMessage;
@@ -17,10 +15,6 @@ public class PaymentInformationPage extends PageObject {
     @FindBy(css = "#payment-buttons-container .button")
     private WebElementFacade continuePaymentInformation;
 
-
-    public WebElementFacade getShippingPriceCheck() {
-        return shippingPriceCheck;
-    }
 
     public WebElementFacade getPaymentMessage() {
         return paymentMessage;

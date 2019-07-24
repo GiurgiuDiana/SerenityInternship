@@ -60,7 +60,13 @@ public class HeaderPage extends PageObject {
     }
     public void clickMinicartCheckout()
     {
-        minicartCheckoutButton.click();
+        if(minicartCheckoutButton.isDisplayed())
+        {  minicartCheckoutButton.click();}
+        else
+        {
+            ///add a product to cart
+
+        }
     }
     public void goToCheckoutPage()
     {

@@ -1,11 +1,14 @@
 package tools;
 
+import models.Product;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 import java.util.List;
 import java.util.Random;
 
 public class Utils {
+
+    private static Product productInList;
 
     public static void displayList(List<WebElementFacade> list){
         for(WebElementFacade element: list){
@@ -21,5 +24,13 @@ public class Utils {
     public static int getRandomQuantity(){
         int random = new Random().nextInt(5);
         return random+1;
+    }
+
+    public static Product getProductInList() {
+        return productInList;
+    }
+
+    public static void setProductInList(Product productInList) {
+        Utils.productInList = productInList;
     }
 }

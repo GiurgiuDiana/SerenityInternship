@@ -3,7 +3,9 @@ package pages;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.support.FindBy;
+import tools.Constants;
 
 import java.util.List;
 
@@ -12,6 +14,9 @@ public class BillingPage extends PageObject {
 
     @FindBy(css = "#billing-address-select")
     private List<WebElementFacade> selectBillingAddress;
+
+    @FindBy(css=".sp-methods > dd")
+    List<WebElementFacade>shippingMethods;
 
     @FindBy(css = "[title='Ship to this address']")
     private WebElementFacade radioShipToThisAddress;
@@ -60,8 +65,22 @@ public class BillingPage extends PageObject {
         setSelectBillingAddress(selectShippingAddress);
         selectShippingAddress(selectShippingChoice);
         pressContinueBilling();
-        toShippingButton.waitUntilClickable();
+
+   for(int i=0; i<20; i++){
+    try{
         toShippingButton.click();
+        break;
+    } catch (
+    ElementNotInteractableException e)
+    {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    }
     }
 
 
