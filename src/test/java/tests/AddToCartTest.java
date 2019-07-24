@@ -34,6 +34,7 @@ public class AddToCartTest extends BaseTest{
         productDetailsSteps.openPage();
         productDetailsSteps.clickRandomColor();
         productDetailsSteps.clickRandomSize();
+        productDetailsSteps.setRandomQuantity();
         productDetailsSteps.clickAddToCart();
     }
 

@@ -14,7 +14,7 @@ import tools.Utils;
 
 import java.util.List;
 
-//@DefaultUrl("http://qa1.dev.evozon.com/fashionnova-leather-dress.html")
+//@DefaultUrl("http://qa1.dev.evozon.com/slim-fit-dobby-oxford-shirt-575.html")
 //@DefaultUrl("http://qa1.dev.evozon.com/suede-loafer-navy-555.html")
 public class ProductDetailsPage extends PageObject {
 
@@ -42,7 +42,7 @@ public class ProductDetailsPage extends PageObject {
 
     private WebElementFacade shoeSizeName;
 
-    @FindBy(css = ".price-info")
+    //@FindBy(css = ".price-info")
     private WebElementFacade productPrice;
 
     @FindBy(css = ".product-shop")
@@ -67,6 +67,20 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public WebElementFacade getProductPrice() {
+
+        try{
+            productPrice = productDetailsContainer.findBy(By.cssSelector(".price-info"));
+        }
+        catch (NoSuchElementException e){
+            System.out.println("no regular price found");
+        }
+
+        try {
+            productPrice = productDetailsContainer.findBy(By.cssSelector(".price-info .special-price"));
+        }
+        catch (NoSuchElementException e){
+            System.out.println("no discounted price found");
+        }
         System.out.println(productPrice.getText());
         return productPrice;
     }
@@ -142,16 +156,16 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public Product addToCart(){
-        System.out.println(colorsList.size());
-        System.out.println(sizeList.size());
+        //System.out.println(colorsList.size());
+        //System.out.println(sizeList.size());
         Product product;
         if(colorsList.size()==0 && sizeList.size()==0){ //if the product does not have colors or sizes options it means it's not configurable
-            product = new Product(productName.getText(), Utils.convertPriceToDouble(productPrice.getText()), quantity);
+            product = new Product(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), quantity);
         }
         else {
-            product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(productPrice.getText()), getColorName().getText(), getSizeName().getText(), quantity);
+            product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), getColorName().getText(), getSizeName().getText(), quantity);
         }
-        System.out.println(product.toString());
+        //System.out.println(product.toString());
         addToCartButton.click();
         return product;
     }
