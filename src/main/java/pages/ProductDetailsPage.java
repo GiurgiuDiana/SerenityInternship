@@ -15,7 +15,7 @@ import tools.Utils;
 import java.util.List;
 
 //@DefaultUrl("http://qa1.dev.evozon.com/slim-fit-dobby-oxford-shirt-575.html")
-//@DefaultUrl("http://qa1.dev.evozon.com/suede-loafer-navy-555.html")
+//@DefaultUrl("http://qa1.dev.evozon.com/jingle-dress.html")
 public class ProductDetailsPage extends PageObject {
 
     @FindBy(css = "#msrp-popup-553oWeJzVVjR2rtBHnvB8Di")
@@ -45,7 +45,8 @@ public class ProductDetailsPage extends PageObject {
     //@FindBy(css = ".price-info")
     private WebElementFacade productPrice;
 
-    @FindBy(css = ".product-shop")
+    //@FindBy(css = ".product-shop")
+    @FindBy(css = ".main-container")
     private WebElementFacade productDetailsContainer;
 
     @FindBy(css = ".add-to-cart button")
@@ -153,6 +154,10 @@ public class ProductDetailsPage extends PageObject {
     public void setRandomQuantity(){
         quantityInput.clear();
         quantityInput.sendKeys(Integer.toString(quantity));
+    }
+
+    public void saveProductObject(){
+
     }
 
     public Product addToCart(){
