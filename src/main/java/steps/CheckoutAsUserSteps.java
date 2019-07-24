@@ -4,6 +4,7 @@ package steps;
 import models.Product;
 import net.thucydides.core.annotations.Step;
 import pages.*;
+import tools.Utils;
 
 import java.util.List;
 
@@ -39,8 +40,6 @@ public class CheckoutAsUserSteps {
         shippingMethodPage.fillInShippingMethod(1);
         String billingInfor=billingPage.getAddress().toLowerCase().replace(",","");
         String addressInput= shippingMethodPage.getShippingMessage().toLowerCase().replace(",","");
-        System.out.println(billingInfor);
-        System.out.println(addressInput);
         assertTrue(addressInput.trim().contains(billingInfor.trim()));
     }
 
@@ -52,7 +51,10 @@ public class CheckoutAsUserSteps {
     @Step
     public void orderReviewPage() {
         List<Product> prod=orderReviewPage.productOrderReviewList();
+        assertTrue(shippingMethodPage.getShippingPrice()== Utils.convertPriceToDouble(orderReviewPage.getShippingPriceCheck().getText().replace("$","").replace(".","")));
         orderReviewPage.pressPlaceOrder();
     }
+
+
 
 }

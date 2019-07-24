@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.support.FindBy;
+import tools.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +49,34 @@ public class OrderReviewPage extends PageObject {
         for(int i=0; i<productNameList.size();i++)
         {
             pr.setName(productNameList.get(i).getText());
-            pr.setPrice((double) Integer.parseInt(productPriceList.get(i).getText().replace("$","").replace(".","")));
+            pr.setPrice(Utils.convertPriceToDouble(productPriceList.get(i).getText().replace("$","").replace(".","")));
             pr.setQuantity( Integer.parseInt(productQtylist.get(i).getText()));
-            System.out.println(pr.getQuantity());
+            System.out.println((productQtylist.get(i).getText()));
 //            System.out.println(pr.getName()+pr.getPrice()+pr.getQuantity());
             productList.add(pr);
         }
         return productList;
     }
+
+    public List<String> getProductNameList() {
+        List<String>productNames= new ArrayList<>();
+        for(WebElementFacade ww:  productNameList)
+        {
+            productNames.add(ww.getText());
+        }
+        return productNames;
+    }
+
+//    public List<Double> getProductPriceList() {
+//        List<Double>productPrices=new ArrayList<>();
+//        for(WebElementFacade ww : productPriceList)
+//        {
+//            productPrices.add()
+//        }
+//        return productPriceList;
+//    }
+//
+//    public List<Integer> getProductQtylist() {
+//        return productQtylist;
+//    }
 }
