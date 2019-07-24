@@ -18,7 +18,7 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(css = "#map-popup")
     private WebElementFacade hiddenPriceBox;
 
-    @FindBy(css = " .product-shop .product-name")
+    @FindBy(css = ".product-shop .product-name")
     private WebElementFacade productName;
 
     @FindBy(css = "#configurable_swatch_color>li")
@@ -29,7 +29,5 @@ public class ProductDetailsPage extends PageObject {
 
     public List<WebElementFacade> getColors() {
         return colorsList;
-
     }
-
 }

@@ -3,10 +3,12 @@ package models;
 public class Product {
     private String name;
     private Double price;
+    private int quantity;
 
-    public Product(String name, Double price) {
+    public Product(String name, Double price, int qty) {
         this.name = name;
         this.price = price;
+        this.quantity = qty;
     }
 
     public Product() {
@@ -27,5 +29,13 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -40,21 +40,6 @@ public class ShippingMethodPage extends PageObject {
         return shippingMessage;
     }
 
-<<<<<<< HEAD
-    public void selectShippingType(int index)
-    {
-//        if(index==1)
-//        {
-            radioButtonFreeShipping.waitUntilClickable();
-            radioButtonFreeShipping.click();
-            shiipingChoice=1;
-//        }
-//        else
-//        {
-//            radioButtonFlateRateShipping.click();
-//            shiipingChoice=2;
-//        }
-=======
     public void selectShippingType(int index) {
         if (index == 1) {
             radioButtonFreeShipping.click();
@@ -63,7 +48,6 @@ public class ShippingMethodPage extends PageObject {
             radioButtonFlateRateShipping.click();
             shippingChoice = 2;
         }
->>>>>>> 0e3de801f1296f18c7b04e7d4cf3ba31c2b171e1
     }
 
     public void selectGiftOption() {

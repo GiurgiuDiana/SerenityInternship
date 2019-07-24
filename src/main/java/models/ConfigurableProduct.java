@@ -4,8 +4,8 @@ public class ConfigurableProduct extends Product {
     private String color;
     private Integer size;
 
-    public ConfigurableProduct(String name, Double price, String color, Integer size) {
-        super(name, price);
+    public ConfigurableProduct(String name, Double price, String color, Integer size, int quantity) {
+        super(name, price, quantity);
         this.color = color;
         this.size = size;
     }
