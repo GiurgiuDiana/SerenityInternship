@@ -9,7 +9,7 @@ import net.thucydides.core.pages.PageObject;
 import java.util.List;
 import java.util.Random;
 
-@DefaultUrl("http://qa1.dev.evozon.com/catalogsearch/result/?q=necklace")
+//@DefaultUrl("http://qa1.dev.evozon.com/catalogsearch/result/?q=necklace")
 public class ProductListPage extends PageObject {
 
     @FindBy(css = ".products-grid .item a>img")
