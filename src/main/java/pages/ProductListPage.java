@@ -30,7 +30,13 @@ public class ProductListPage extends PageObject {
     }
 
     public void goToRandomProductPage() {
-        randomIndex = new Random().nextInt(productsImageList.size() - 1);
+        if(productsImageList.size() == 1)
+        {
+            randomIndex = 0;
+        }
+        else {
+            randomIndex = new Random().nextInt(productsImageList.size() - 1);
+        }
         WebElementFacade productChosen = productsDetailsList.get(randomIndex);
 
         String productName = productChosen.findElement(By.cssSelector(".product-info .product-name")).getText();

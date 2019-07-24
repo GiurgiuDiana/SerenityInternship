@@ -27,9 +27,9 @@ public class AddToCartTest extends BaseTest{
         productListSteps.openPage();
         productListSteps.getAllProducts();
         productListSteps.navigateToRandomProduct();
-    }
+    }*/
 
-    @Test
+   /* @Test
     public void configurationsTest(){
         productDetailsSteps.openPage();
         productDetailsSteps.clickRandomColor();
