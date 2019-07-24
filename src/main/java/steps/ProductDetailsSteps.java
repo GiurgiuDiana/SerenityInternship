@@ -3,15 +3,21 @@ package steps;
 import models.Product;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import org.junit.Assert;
 import pages.ProductDetailsPage;
 import tools.RandomElementClicker;
+import tools.Utils;
 
 import java.util.List;
-import java.util.Random;
 
 public class ProductDetailsSteps {
 
     ProductDetailsPage productDetailsPage;
+
+    //private WebElementFacade price;
+    private Double price;
+    private String name;
+
     @Step
     public void openPage(){
         productDetailsPage.open();
@@ -32,12 +38,26 @@ public class ProductDetailsSteps {
 
     @Step
     public void getProductPrice(){
-        WebElementFacade price = productDetailsPage.getProductPrice();
+        price = Utils.convertPriceToDouble(productDetailsPage.getProductPrice().getText());
+        System.out.println(price);
+    }
+
+    @Step
+    public void getProductName(){
+        name = productDetailsPage.getProductName().getText();
+        System.out.println(name);
     }
 
     @Step
     public void clickAddToCart(){
-        Product product = productDetailsPage.addToCart();
+        Product productInCart = productDetailsPage.addToCart();
+        Product productInList = Utils.getProductInList();
+        System.out.println(productInCart.toString());
+        System.out.println("========================================");
+        System.out.println(productInList.toString());
+        Assert.assertTrue(productInCart.getName().equals(productInList.getName()));
+        Assert.assertTrue(productInCart.getPrice() .equals(productInList.getPrice()));
+
     }
 
     @Step
