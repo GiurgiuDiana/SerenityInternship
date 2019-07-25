@@ -2,9 +2,9 @@ package pages;
 
 import models.ConfigurableProduct;
 import models.Product;
-import models.ProductsInCart;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchContextException;
 import org.openqa.selenium.NoSuchElementException;
@@ -54,8 +54,8 @@ public class ShoppingCartPage extends PageObject {
         return colorOfLastProduct;
     }
 
-    public WebElementFacade initSize(){
-        try{
+    public WebElementFacade initSize() {
+        try {
             sizeOfLastProduct = configurableProductItemOptions.findBy(By.cssSelector("tr.last.odd .item-options > dt:nth-child(3)"));
         } catch (NoSuchElementException e) {
             System.out.println("product does not have sizes");

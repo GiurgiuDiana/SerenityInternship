@@ -24,13 +24,13 @@ public class HeaderPage extends PageObject {
     @FindBy(css = "#search")
     private WebElementFacade searchField;
 
-    @FindBy(css=".header-minicart >a")
+    @FindBy(css = ".header-minicart >a")
     private WebElementFacade minicartButton;
 
-    @FindBy(css=".button.checkout-button")
+    @FindBy(css = ".button.checkout-button")
     private WebElementFacade minicartCheckoutButton;
 
-    @FindBy(css=".minicart-wrapper")
+    @FindBy(css = ".minicart-wrapper")
     private WebElementFacade minicartMenu;
 
     public void clickOnAccountButton() {
@@ -50,26 +50,27 @@ public class HeaderPage extends PageObject {
         searchField.sendKeys(message + "\n");
     }
 
-    public  void clickOnMinicartButton()
-    {
+    public void clickOnMinicartButton() {
         minicartButton.click();
     }
-    public void waitForMinicartMenuToAppear()
-    {
+
+    public void waitForMinicartMenuToAppear() {
         minicartMenu.waitUntilVisible();
     }
-    public void clickMinicartCheckout()
-    {
-        if(minicartCheckoutButton.isDisplayed())
-        {  minicartCheckoutButton.click();}
-        else
-        {
+
+    public void clickMinicartCheckout() {
+        if (minicartCheckoutButton.isDisplayed()) {
+            minicartCheckoutButton.click();
+        } else {
             ///add a product to cart
+            minicartMenu.click();
+            minicartMenu.findBy("[title='Log Out']").waitUntilVisible();
+            minicartMenu.findBy("[title='Log Out']").click();
 
         }
     }
-    public void goToCheckoutPage()
-    {
+
+    public void goToCheckoutPage() {
         clickOnMinicartButton();
         waitForMinicartMenuToAppear();
         clickMinicartCheckout();

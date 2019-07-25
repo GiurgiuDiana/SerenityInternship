@@ -30,7 +30,7 @@ public class SearchPageSteps {
     }
 
     @StepGroup
-    public void performProductSearch(){
+    public void performProductSearch() {
         isOnHomepage();
         fillingSearchField();
     }

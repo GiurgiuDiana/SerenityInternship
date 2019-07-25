@@ -1,12 +1,11 @@
 package steps;
 
-import models.Product;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+import org.junit.Assert;
 import pages.ProductDetailsPage;
 import pages.ShoppingCartPage;
-import org.junit.Assert;
 import tools.Constants;
 
 public class ShoppingCartSteps {
@@ -18,17 +17,17 @@ public class ShoppingCartSteps {
     private ProductDetailsPage productDetailsPage;
 
     @Step
-    public void isOnProductDetailsPage(){
+    public void isOnProductDetailsPage() {
         productDetailsPage.open();
     }
 
     @Step
-    public void addProductToCart(){
+    public void addProductToCart() {
         productDetailsPage.clickAddToCart();
     }
 
     @Step
-    public void shouldBeOnTheShoppingCartPage(){
+    public void shouldBeOnTheShoppingCartPage() {
         Assert.assertTrue(shoppingCartPage.containsText(Constants.CART_PAGE_TITLE));
     }
 
@@ -43,12 +42,12 @@ public class ShoppingCartSteps {
     }
 
     @Step
-    public void compareProductFromCartToDetailsPage(){
+    public void compareProductFromCartToDetailsPage() {
         Assert.assertTrue(Serenity.sessionVariableCalled(Constants.PROD_FROM_DETAILS_PAGE_VAR_NAME).equals(Serenity.sessionVariableCalled(Constants.PROD_FROM_CART_PAGE_VAR_NAME)));
     }
 
     @StepGroup
-    public void validateProductsAreConsistent(){
+    public void validateProductsAreConsistent() {
         addProductToCart();
     }
 }

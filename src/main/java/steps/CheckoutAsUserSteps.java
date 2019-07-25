@@ -8,7 +8,6 @@ import tools.Utils;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class CheckoutAsUserSteps {
@@ -38,9 +37,11 @@ public class CheckoutAsUserSteps {
     @Step
     public void chooseShippingMethod() throws Exception {
         shippingMethodPage.fillInShippingMethod(1);
-        String billingInfor=billingPage.getAddress().toLowerCase().replace(",","");
-        String addressInput= shippingMethodPage.getShippingMessage().toLowerCase().replace(",","");
-        assertTrue(addressInput.trim().contains(billingInfor.trim()));
+        String billingInformation = billingPage.getAddress().toLowerCase().replace(",", "");
+        System.out.println(billingInformation);
+        String addressInput = shippingMethodPage.getShippingMessage().toLowerCase().replace(",", "");
+        System.out.println(addressInput);
+        assertTrue(addressInput.trim().contains(billingInformation.trim()));
     }
 
     @Step
@@ -50,11 +51,10 @@ public class CheckoutAsUserSteps {
 
     @Step
     public void orderReviewPage() {
-        List<Product> prod=orderReviewPage.productOrderReviewList();
-        assertTrue(shippingMethodPage.getShippingPrice()== Utils.convertPriceToDouble(orderReviewPage.getShippingPriceCheck().getText().replace("$","").replace(".","")));
+        List<Product> prod = orderReviewPage.productOrderReviewList();
+        assertTrue(shippingMethodPage.getShippingPrice() == Utils.convertPriceToDouble(orderReviewPage.getShippingPriceCheck().getText().replace("$", "").replace(".", "")));
         orderReviewPage.pressPlaceOrder();
     }
-
 
 
 }

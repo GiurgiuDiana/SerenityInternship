@@ -26,41 +26,36 @@ public class ProductListPage extends PageObject {
     private Integer randomIndex;
 
 
-
     public List<WebElementFacade> getProductsLinksList() {
         return productsImageList;
     }
 
-    public void chooseRandomProduct(){
-        if(productsImageList.size() == 1)
-        {
+    public void chooseRandomProduct() {
+        if (productsImageList.size() == 1) {
             randomIndex = 0;
-        }
-        else {
+        } else {
             randomIndex = new Random().nextInt(productsImageList.size() - 1);
         }
     }
 
-    public void saveChosenProduct(){
+    public void saveChosenProduct() {
 
         WebElementFacade productChosen = productsDetailsList.get(randomIndex);
 
         String productName = productChosen.findElement(By.cssSelector(".product-info .product-name")).getText();
-        Double productPrice  = 0.0;
+        Double productPrice = 0.0;
         System.out.println(productName);
         try {
             productPrice = Utils.convertPriceToDouble(productChosen.findElement(By.cssSelector(".regular-price")).getText());
             System.out.println(productPrice);
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("no regular price found");
         }
 
         try {
             productPrice = Utils.convertPriceToDouble(productChosen.findElement(By.cssSelector(".special-price")).getText());
             System.out.println(productPrice);
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("no discounted price found");
         }
 
@@ -72,7 +67,6 @@ public class ProductListPage extends PageObject {
     public void goToChosenProductPage() {
         productsImageList.get(randomIndex).click();
     }
-
 
 
 }

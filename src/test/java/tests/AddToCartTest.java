@@ -4,8 +4,10 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import steps.*;
+import steps.ProductDetailsSteps;
+import steps.ProductListSteps;
+import steps.SearchPageSteps;
+import steps.ShoppingCartSteps;
 
 @RunWith(SerenityRunner.class)
 public class AddToCartTest extends BaseTest{

@@ -10,7 +10,6 @@ import pages.ProductDetailsPage;
 import tools.Constants;
 import tools.RandomElementClicker;
 import tools.Utils;
-import net.serenitybdd.core.Serenity;
 
 import java.util.List;
 
@@ -23,41 +22,42 @@ public class ProductDetailsSteps {
     private String name;
 
     @Step
-    public void openPage(){
+    public void openPage() {
         productDetailsPage.open();
     }
 
     @Step
-    public void clickRandomColor(){
-        List<WebElementFacade> colors= productDetailsPage.getColors();
+    public void clickRandomColor() {
+        List<WebElementFacade> colors = productDetailsPage.getColors();
         RandomElementClicker.clickRandomElement(colors);
 
     }
 
     @Step
-    public void clickRandomSize(){
+    public void clickRandomSize() {
         List<WebElementFacade> sizes = productDetailsPage.getSizes();
         RandomElementClicker.clickRandomElement(sizes);
     }
 
     @Step
-    public void getProductPrice(){
+    public void getProductPrice() {
         price = Utils.convertPriceToDouble(productDetailsPage.getProductPrice().getText());
         System.out.println(price);
     }
 
     @Step
-    public void getProductName(){
+    public void getProductName() {
         name = productDetailsPage.getProductName().getText();
         System.out.println(name);
     }
+
     @Step
-    public void saveProductAsObject(){
+    public void saveProductAsObject() {
         productDetailsPage.saveProductObject();
     }
 
     @Step
-    public void clickAddToCart(){
+    public void clickAddToCart() {
         productDetailsPage.clickAddToCart();
     }
 
@@ -69,16 +69,16 @@ public class ProductDetailsSteps {
         System.out.println("========================================");
         System.out.println(productInList.toString());
         Assert.assertTrue(productAddedToCart.getName().equals(productInList.getName()));
-        Assert.assertTrue(productAddedToCart.getPrice() .equals(productInList.getPrice()));
+        Assert.assertTrue(productAddedToCart.getPrice().equals(productInList.getPrice()));
     }
 
     @Step
-    public void setRandomQuantity(){
+    public void setRandomQuantity() {
         productDetailsPage.setRandomQuantity();
     }
 
     @StepGroup
-    public void performProductDetailsSelection(){
+    public void performProductDetailsSelection() {
         clickRandomColor();
         clickRandomSize();
         setRandomQuantity();
