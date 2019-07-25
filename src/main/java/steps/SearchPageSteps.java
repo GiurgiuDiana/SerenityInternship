@@ -43,6 +43,7 @@ public class SearchPageSteps {
         Assert.assertTrue(headerPage.containsText("SEARCH RESULTS FOR '" + searchKeyword.toUpperCase() + "'"));
     }
 
+
     @StepGroup
     public void performProductSearch() {
         isOnHomepage();

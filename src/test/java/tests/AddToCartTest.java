@@ -42,7 +42,6 @@ public class AddToCartTest extends BaseTest{
     public void addProductToCartTest(){
         searchPageSteps.isOnHomepage();
         searchPageSteps.fillingSearchField();
-        searchPageSteps.shouldBeOnSearchResultsPage();
         productListSteps.chooseRandomProduct();
         productListSteps.saveChosenProduct();
         productListSteps.navigateToRandomProduct();
