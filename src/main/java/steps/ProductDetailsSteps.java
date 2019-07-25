@@ -3,6 +3,7 @@ package steps;
 import models.Product;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 import pages.ProductDetailsPage;
 import tools.RandomElementClicker;
@@ -63,6 +64,13 @@ public class ProductDetailsSteps {
     @Step
     public void setRandomQuantity(){
         productDetailsPage.setRandomQuantity();
+    }
+
+    @StepGroup
+    public void performProductDetailsSelection(){
+        clickRandomColor();
+        clickRandomSize();
+        setRandomQuantity();
     }
 
 }

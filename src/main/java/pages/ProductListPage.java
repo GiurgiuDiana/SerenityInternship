@@ -69,5 +69,4 @@ public class ProductListPage extends PageObject {
 
 
 
-
 }

@@ -5,10 +5,7 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import steps.ProductDetailsSteps;
-import steps.LoginSteps;
-import steps.ProductListSteps;
-import steps.SearchPageSteps;
+import steps.*;
 
 @RunWith(SerenityRunner.class)
 public class AddToCartTest extends BaseTest{
@@ -18,9 +15,10 @@ public class AddToCartTest extends BaseTest{
     public ProductListSteps productListSteps;
     @Steps
     public SearchPageSteps searchPageSteps;
-
     @Steps
     ProductDetailsSteps productDetailsSteps;
+    @Steps
+    ShoppingCartSteps shoppingCartSteps;
 
     /*@Test
     public void displayProductsFoundTest() {
@@ -50,4 +48,12 @@ public class AddToCartTest extends BaseTest{
         productDetailsSteps.clickAddToCart();
 
     }
+
+//    @Test
+//    public void validateProductDataFromDetailsPageAndCart(){
+//        searchPageSteps.performProductSearch();
+//        productListSteps.navigateToRandomProduct();
+//        productDetailsSteps.performProductDetailsSelection();
+//        shoppingCartSteps.validateProductsAreConsistent();
+//    }
 }

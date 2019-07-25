@@ -5,11 +5,16 @@ import models.Product;
 import models.ProductsInCart;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchContextException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
+import net.thucydides.core.pages.PageObject;
+
+import java.util.List;
 
 @DefaultUrl("http://qa1.dev.evozon.com/checkout/cart/")
-public class ShoppingCartPage {
+public class ShoppingCartPage extends PageObject {
 
     ShoppingCartPage() {
     }
@@ -29,11 +34,33 @@ public class ShoppingCartPage {
     @FindBy(css = "tr.last.odd td.product-cart-total .price")
     private WebElementFacade totalPriceOfLastProduct;
 
-    @FindBy(css = "tr.last.even .item-options")
+    @FindBy(css = "tr.last.odd > td.product-cart-info > dl")
     private WebElementFacade configurableProductItemOptions;
 
-    @FindBy(css = "tr.last.even > td.a-center.product-cart-remove.last")
+    @FindBy(css = "tr.last.odd > td.a-center.product-cart-remove.last > a")
     private WebElementFacade removeLastProductButton;
+
+    private WebElementFacade colorOfLastProduct;
+
+    private WebElementFacade sizeOfLastProduct;
+
+    public WebElementFacade initColor() {
+        try {
+            colorOfLastProduct = configurableProductItemOptions.findBy(By.cssSelector("tr.last.odd .item-options > dt:first-of-type"));
+        } catch (NoSuchElementException e) {
+            System.out.println("product does not have colors");
+        }
+        return colorOfLastProduct;
+    }
+
+    public WebElementFacade initSize(){
+        try{
+            sizeOfLastProduct = configurableProductItemOptions.findBy(By.cssSelector("tr.last.odd .item-options > dt:nth-child(3)"));
+        } catch (NoSuchElementException e) {
+            System.out.println("product does not have sizes");
+        }
+        return sizeOfLastProduct;
+    }
 
     public boolean isSimpleProduct() {
         try {
@@ -44,14 +71,14 @@ public class ShoppingCartPage {
         }
     }
 
-    public Product createSimpleProductFromCart(){
-        String productNameString = nameOfLastProduct.getText();
-        Product cartProduct = new Product(productNameString, Double.parseDouble(productNameString.substring(1)), Integer.parseInt(quantityOfLastProduct.getText()));
+    public Product createSimpleProductFromCart() {
+        Product cartProduct = new Product(nameOfLastProduct.getText(), Double.parseDouble(pricePerUnitOfLastProduct.getText().substring(1)), Integer.parseInt(quantityOfLastProduct.getText()));
         return cartProduct;
     }
 
-//    public ConfigurableProduct createConfigurableProductFromCart(){
-//
-//    }
+    public Product createConfigurableProductFromCart(){
+        ConfigurableProduct cartProduct = new ConfigurableProduct(nameOfLastProduct.getText(), Double.parseDouble(pricePerUnitOfLastProduct.getText().substring(1)), colorOfLastProduct.getText(), sizeOfLastProduct.getText(), Integer.parseInt(quantityOfLastProduct.getText()));
+        return cartProduct;
+    }
 
 }
