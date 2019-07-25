@@ -2,6 +2,7 @@ package pages;
 
 
 import models.Product;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -29,7 +30,7 @@ public class ProductListPage extends PageObject {
         return productsImageList;
     }
 
-    public void goToRandomProductPage() {
+    public void chooseRandomProduct(){
         if(productsImageList.size() == 1)
         {
             randomIndex = 0;
@@ -37,6 +38,10 @@ public class ProductListPage extends PageObject {
         else {
             randomIndex = new Random().nextInt(productsImageList.size() - 1);
         }
+    }
+
+    public void saveChosenProduct(){
+
         WebElementFacade productChosen = productsDetailsList.get(randomIndex);
 
         String productName = productChosen.findElement(By.cssSelector(".product-info .product-name")).getText();
@@ -59,12 +64,12 @@ public class ProductListPage extends PageObject {
         }
 
         Product product = new Product(productName, productPrice, 1);
-        Utils.setProductInList(product);
-        System.out.println(Utils.getProductInList().toString());
+        Serenity.setSessionVariable("product chosen from list").to(product);
 
+    }
 
+    public void goToChosenProductPage() {
         productsImageList.get(randomIndex).click();
-        //System.out.println(productsDetailsList.get(randomIndex).getText());
     }
 
 
