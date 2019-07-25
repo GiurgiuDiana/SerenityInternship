@@ -13,7 +13,7 @@ public class BaseTest {
     @Before
     public void setup() {
         webdriver.manage().window().maximize();
-        webdriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
 }

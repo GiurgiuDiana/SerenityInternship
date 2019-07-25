@@ -30,13 +30,17 @@ public class CheckoutAsDifferentUsersDataDrivenVersion {
     private CheckoutAsUserSteps checkoutAsUserSteps;
 
 
+
     private String userEmail;
     private String password;
+
 
     @Test
     public void checkoutAsLoggedInUser() throws Exception {
         webDriver.manage().window().maximize();
         loginSteps.performLogin(userEmail, password);
+        boolean var=loginSteps.checkTheBillingInfoEqualsShippingInfo();
+        System.out.println(var);
         searchPageSteps.fillingSearchField();
         productListSteps.chooseRandomProduct();
         productListSteps.navigateToRandomProduct();
@@ -45,7 +49,7 @@ public class CheckoutAsDifferentUsersDataDrivenVersion {
         loginSteps.goToCheckoutPage();
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();
-        checkoutAsUserSteps.chooseShippingMethod();
+        checkoutAsUserSteps.chooseShippingMethod(var);
         checkoutAsUserSteps.paymentInformation();
         checkoutAsUserSteps.orderReviewPage();
     }
