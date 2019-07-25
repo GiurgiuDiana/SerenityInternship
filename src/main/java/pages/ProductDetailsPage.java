@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
+import tools.Constants;
 import tools.Utils;
 import net.serenitybdd.core.Serenity;
 
@@ -160,7 +161,7 @@ public class ProductDetailsPage extends PageObject {
             product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), getColorName().getText(), getSizeName().getText(), quantity);
         }
 
-        Serenity.setSessionVariable("product added to cart").to(product);
+        Serenity.setSessionVariable(Constants.ADDED_PROD_FROM_DETAILS_PAGE_VAR_NAME).to(product);
 
     }
 

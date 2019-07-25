@@ -24,7 +24,7 @@ public class ShoppingCartSteps {
 
     @Step
     public void addProductToCart(){
-        Serenity.setSessionVariable(Constants.PROD_FROM_DETAILS_PAGE_VAR_NAME).to(productDetailsPage.addToCart());
+        productDetailsPage.clickAddToCart();
     }
 
     @Step
