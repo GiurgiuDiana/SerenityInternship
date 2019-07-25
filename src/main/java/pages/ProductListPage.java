@@ -68,5 +68,33 @@ public class ProductListPage extends PageObject {
         productsImageList.get(randomIndex).click();
     }
 
+    public boolean checkIfProductWasFound(String expectedProductName, String expectedProductPrice){
+        for (WebElementFacade element:productsDetailsList){
+            String productName = element.findElement(By.cssSelector(".product-info .product-name")).getText();
+            String productPrice = new String();
+
+            try {
+                productPrice = element.findElement(By.cssSelector(".regular-price")).getText();
+                //System.out.println(productPrice);
+            }
+            catch (NoSuchElementException e){
+                System.out.println("no regular price found");
+            }
+
+            try {
+                productPrice = element.findElement(By.cssSelector(".special-price")).getText();
+                //System.out.println(productPrice);
+            }
+            catch (NoSuchElementException e){
+                System.out.println("no discounted price found");
+            }
+
+            if (expectedProductName.equalsIgnoreCase(productName) && expectedProductPrice.equalsIgnoreCase(productPrice)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }

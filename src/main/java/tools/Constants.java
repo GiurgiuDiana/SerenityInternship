@@ -16,4 +16,5 @@ public class Constants {
     public static final String PROD_FROM_LIST_PAGE_VAR_NAME = "Product Chosen From List";
     public static final int FREE_SHIPPINNG_CHOICE = 1;
     public static final int FLATRATE_SHIPPINNG_CHOICE = 2;
+    public static final String PROD_FROM_LIST_PAGE_VAR_NAME = "product found in list";
 }
