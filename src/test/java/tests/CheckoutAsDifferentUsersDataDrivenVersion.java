@@ -25,11 +25,17 @@ public class CheckoutAsDifferentUsersDataDrivenVersion{
     private CheckoutAsUserSteps checkoutAsUserSteps;
 
 
-    private String Username;
-    private String Password;
+    private String userEmail;
+    private String password;
 
     @Test
     public void checkoutAsLoggedInUser() throws Exception {
+        webDriver.manage().window().maximize();
+        loginSteps.isOnHomepage();
+        loginSteps.reachLoginFromHomepage();
+        loginSteps.shouldBeOnTheLoginPage();
+        loginSteps.fillingLoginRequiredFields(userEmail, password);
+        loginSteps.goToCheckoutPage();
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();
         checkoutAsUserSteps.chooseShippingMethod();

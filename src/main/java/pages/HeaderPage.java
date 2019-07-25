@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.By;
 
 @DefaultUrl("http://qa1.dev.evozon.com/")
 public class HeaderPage extends PageObject {
@@ -65,6 +66,9 @@ public class HeaderPage extends PageObject {
         else
         {
             ///add a product to cart
+            minicartMenu.click();
+            minicartMenu.findBy("[title='Log Out']").waitUntilVisible();
+            minicartMenu.findBy("[title='Log Out']").click();
 
         }
     }

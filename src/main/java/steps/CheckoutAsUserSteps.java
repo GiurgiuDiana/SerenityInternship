@@ -38,9 +38,11 @@ public class CheckoutAsUserSteps {
     @Step
     public void chooseShippingMethod() throws Exception {
         shippingMethodPage.fillInShippingMethod(1);
-        String billingInfor=billingPage.getAddress().toLowerCase().replace(",","");
+        String billingInformation=billingPage.getAddress().toLowerCase().replace(",","");
+        System.out.println(billingInformation);
         String addressInput= shippingMethodPage.getShippingMessage().toLowerCase().replace(",","");
-        assertTrue(addressInput.trim().contains(billingInfor.trim()));
+        System.out.println(addressInput);
+        assertTrue(addressInput.trim().contains(billingInformation.trim()));
     }
 
     @Step
