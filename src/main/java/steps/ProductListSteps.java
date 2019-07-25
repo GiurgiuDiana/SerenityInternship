@@ -36,12 +36,12 @@ public class ProductListSteps {
     }
 
     @Step
-    public void saveChosenProduct(){
+    public void saveChosenProduct() {
         productListPage.saveChosenProduct();
     }
 
     @Step
-    public void chooseRandomProduct(){
+    public void chooseRandomProduct() {
         productListPage.chooseRandomProduct();
     }
 

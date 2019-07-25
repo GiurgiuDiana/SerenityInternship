@@ -32,7 +32,7 @@ public class ConfigurableProduct extends Product {
 
     @Override
     public String toString() {
-        return  super.toString() +
+        return super.toString() +
                 "ConfigurableProduct{" +
                 "color='" + color + '\'' +
                 ", size='" + size + '\'' +

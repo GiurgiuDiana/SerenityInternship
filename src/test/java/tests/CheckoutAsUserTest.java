@@ -1,7 +1,6 @@
 package tests;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +9,7 @@ import steps.LoginSteps;
 
 
 @RunWith(SerenityRunner.class)
-public class CheckoutAsUserTest extends BaseTest
-{
+public class CheckoutAsUserTest extends BaseTest {
     @Steps
     public CheckoutAsUserSteps checkoutAsUserSteps;
     @Steps
@@ -23,7 +21,7 @@ public class CheckoutAsUserTest extends BaseTest
         loginSteps.reachLoginFromHomepage();
         loginSteps.fillingLoginRequiredFields();
         loginSteps.goToCheckoutPage();
-     //   checkoutAsUserSteps.userIsOnCheckoutPage();
+        //   checkoutAsUserSteps.userIsOnCheckoutPage();
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();
         checkoutAsUserSteps.chooseShippingMethod();
