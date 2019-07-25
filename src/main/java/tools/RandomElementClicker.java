@@ -13,9 +13,11 @@ public class RandomElementClicker {
             Integer randomIndex;
             if (upperLimit > 0) {
                 randomIndex = new Random().nextInt(upperLimit);
+                Utils.setRandomNumber(randomIndex);
             }
             else {
                 randomIndex = 0;
+                Utils.setRandomNumber(randomIndex);
             }
 
             list.get(randomIndex).click();
