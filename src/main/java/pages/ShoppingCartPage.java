@@ -10,6 +10,7 @@ import org.openqa.selenium.NoSuchContextException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import net.thucydides.core.pages.PageObject;
+import tools.Utils;
 
 import java.util.List;
 
@@ -72,12 +73,12 @@ public class ShoppingCartPage extends PageObject {
     }
 
     public Product createSimpleProductFromCart() {
-        Product cartProduct = new Product(nameOfLastProduct.getText(), Double.parseDouble(pricePerUnitOfLastProduct.getText().substring(1)), Integer.parseInt(quantityOfLastProduct.getText()));
+        Product cartProduct = new Product(nameOfLastProduct.getText(), Utils.convertPriceToDouble(pricePerUnitOfLastProduct.getText()), Integer.parseInt(quantityOfLastProduct.getText()));
         return cartProduct;
     }
 
     public Product createConfigurableProductFromCart(){
-        ConfigurableProduct cartProduct = new ConfigurableProduct(nameOfLastProduct.getText(), Double.parseDouble(pricePerUnitOfLastProduct.getText().substring(1)), colorOfLastProduct.getText(), sizeOfLastProduct.getText(), Integer.parseInt(quantityOfLastProduct.getText()));
+        ConfigurableProduct cartProduct = new ConfigurableProduct(nameOfLastProduct.getText(), Utils.convertPriceToDouble(pricePerUnitOfLastProduct.getText()), colorOfLastProduct.getText(), sizeOfLastProduct.getText(), Integer.parseInt(quantityOfLastProduct.getText()));
         return cartProduct;
     }
 

@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 import pages.ProductDetailsPage;
+import tools.Constants;
 import tools.RandomElementClicker;
 import tools.Utils;
 import net.serenitybdd.core.Serenity;
@@ -62,8 +63,8 @@ public class ProductDetailsSteps {
 
     @Step
     public void verifyProductAdded(){
-        Product productAddedToCart = Serenity.sessionVariableCalled("product added to cart");
-        Product productInList = Serenity.sessionVariableCalled("product chosen from list");
+        Product productAddedToCart = Serenity.sessionVariableCalled(Constants.ADDED_PROD_FROM_DETAILS_PAGE_VAR_NAME);
+        Product productInList = Serenity.sessionVariableCalled(Constants.PROD_FROM_LIST_PAGE_VAR_NAME);
         System.out.println(productAddedToCart.toString());
         System.out.println("========================================");
         System.out.println(productInList.toString());

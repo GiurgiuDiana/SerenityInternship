@@ -8,6 +8,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import tools.Constants;
 import tools.Utils;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public class ProductListPage extends PageObject {
         }
 
         Product product = new Product(productName, productPrice, 1);
-        Serenity.setSessionVariable("product chosen from list").to(product);
+        Serenity.setSessionVariable(Constants.PROD_FROM_LIST_PAGE_VAR_NAME).to(product);
 
     }
 
