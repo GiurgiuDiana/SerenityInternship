@@ -60,7 +60,7 @@ public class ProductListPage extends PageObject {
         }
 
         Product product = new Product(productName, productPrice, 1);
-        Serenity.setSessionVariable(Constants.PROD_CHOSEN_FROM_LIST).to(product);
+        Serenity.setSessionVariable(Constants.PROD_FROM_LIST_PAGE_VAR_NAME).to(product);
 
     }
 

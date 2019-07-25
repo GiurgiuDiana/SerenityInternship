@@ -64,7 +64,7 @@ public class ProductDetailsSteps {
     @Step
     public void verifyProductAdded(){
         Product productAddedToCart = Serenity.sessionVariableCalled(Constants.ADDED_PROD_FROM_DETAILS_PAGE_VAR_NAME);
-        Product productInList = Serenity.sessionVariableCalled(Constants.PROD_CHOSEN_FROM_LIST);
+        Product productInList = Serenity.sessionVariableCalled(Constants.PROD_FROM_LIST_PAGE_VAR_NAME);
         System.out.println(productAddedToCart.toString());
         System.out.println("========================================");
         System.out.println(productInList.toString());
