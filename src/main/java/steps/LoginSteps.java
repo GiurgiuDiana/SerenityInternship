@@ -33,15 +33,30 @@ public class LoginSteps {
     }
 
     @Step
-    public void fillingLoginRequiredFields() {
-        loginPage.inputEmailValueInField();
-        loginPage.inputPasswordValueInField();
+    public void fillingLoginRequiredFields(String email, String password) {
+        loginPage.inputEmailValueInField(email);
+        loginPage.inputPasswordValueInField(password);
         loginPage.pressLoginButton();
     }
 
     @Step
-    public void shouldBeOnTheAccountPage() {
-        Assert.assertTrue(loginPage.containsText(Constants.USER_NAME));
+    public void fillingLoginRequiredFields() {
+        loginPage.inputEmailValueInField(Constants.USER_EMAIL);
+        loginPage.inputPasswordValueInField(Constants.USER_PASS);
+        loginPage.pressLoginButton();
+    }
+
+    @Step
+    public void shouldBeOnTheAccountPage(String fullUserName) {
+        Assert.assertTrue(loginPage.containsText(fullUserName));
+//        Assert.assertTrue(loginPage.containsText(Constants.USER_NAME));
+    }
+
+    @StepGroup
+    public void performLogin(String email, String password) {
+        isOnHomepage();
+        reachLoginFromHomepage();
+        fillingLoginRequiredFields(email, password);
     }
 
     @StepGroup
@@ -52,8 +67,7 @@ public class LoginSteps {
     }
 
     @Step
-    public void goToCheckoutPage()
-    {
+    public void goToCheckoutPage() {
         headerPage.goToCheckoutPage();
     }
 }

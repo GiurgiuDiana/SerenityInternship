@@ -22,12 +22,14 @@ public class LoginPage extends PageObject {
     @FindBy(css = "button[title='Login']")
     private WebElementFacade loginButton;
 
-    public void inputEmailValueInField() {
-        emailAddressField.waitUntilVisible().sendKeys(Constants.USER_EMAIL);
+    public void inputEmailValueInField(String email) {
+        emailAddressField.waitUntilClickable().sendKeys(email);
+//        emailAddressField.waitUntilVisible().sendKeys(Constants.USER_EMAIL);
     }
 
-    public void inputPasswordValueInField() {
-        passwordField.waitUntilVisible().sendKeys(Constants.USER_PASS);
+    public void inputPasswordValueInField(String password) {
+        passwordField.waitUntilClickable().sendKeys(password);
+//        passwordField.waitUntilVisible().sendKeys(Constants.USER_PASS);
     }
 
     public void pressLoginButton() {

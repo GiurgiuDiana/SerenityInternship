@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import tools.Utils;
+import net.serenitybdd.core.Serenity;
 
 
 import java.util.List;
@@ -58,10 +59,9 @@ public class ProductDetailsPage extends PageObject {
 
 
     public WebElementFacade getColorName() {
-        try{
+        try {
             colorName = productDetailsContainer.findBy(By.cssSelector("#select_label_color"));
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("product does not have colors");
         }
         return colorName;
@@ -87,20 +87,17 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public WebElementFacade getSizeName() {
-        if (isShoe){
+        if (isShoe) {
             try {
                 shoeSizeName = productDetailsContainer.findBy(By.cssSelector("#select_label_shoe_size"));
-            }
-            catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 System.out.println("No different sizes available");
             }
             return shoeSizeName;
-        }
-        else {
+        } else {
             try {
                 sizeName = productDetailsContainer.findBy(By.cssSelector("#select_label_size"));
-            }
-            catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 System.out.println("No different sizes available");
             }
             //sizeName = productDetailsContainer.findBy(By.cssSelector("#select_label_size"));
@@ -116,23 +113,21 @@ public class ProductDetailsPage extends PageObject {
     public List<WebElementFacade> getColors() {
         try {
             colorsList = productDetailsContainer.thenFindAll(By.cssSelector("#configurable_swatch_color>li:not(.not-available)"));
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("product does not have different colors");
         }
         return colorsList;
     }
 
-    public List<WebElementFacade> getSizes(){
-        try{
+    public List<WebElementFacade> getSizes() {
+        try {
             sizeList = productDetailsContainer.thenFindAll(By.cssSelector("#configurable_swatch_size>:not(.not-available)"));
             //System.out.println("finding the size list for clothes");
-            if(sizeList.size()>0){
+            if (sizeList.size() > 0) {
                 isShoe = false;
                 return sizeList;
             }
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("no sizes or it's a shoe");
         }
 
@@ -140,29 +135,23 @@ public class ProductDetailsPage extends PageObject {
             sizeList = productDetailsContainer.thenFindAll(By.cssSelector("#configurable_swatch_shoe_size>li:not(.not-available)"));
             //System.out.println("finding the size list for shoes");
             //System.out.println(sizeList.size());
-            if (sizeList.size()>0){
+            if (sizeList.size() > 0) {
                 isShoe = true;
             }
             //return sizeList;
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("no sizes or not a shoe");
         }
         return sizeList;
     }
 
-    public void setRandomQuantity(){
+    public void setRandomQuantity() {
         quantityInput.clear();
         quantityInput.sendKeys(Integer.toString(quantity));
     }
 
     public void saveProductObject(){
 
-    }
-
-    public Product addToCart(){
-        //System.out.println(colorsList.size());
-        //System.out.println(sizeList.size());
         Product product;
         if(colorsList.size()==0 && sizeList.size()==0){ //if the product does not have colors or sizes options it means it's not configurable
             product = new Product(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), quantity);
@@ -170,9 +159,13 @@ public class ProductDetailsPage extends PageObject {
         else {
             product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), getColorName().getText(), getSizeName().getText(), quantity);
         }
-        //System.out.println(product.toString());
+
+        Serenity.setSessionVariable("product added to cart").to(product);
+
+    }
+
+    public void clickAddToCart(){
         addToCartButton.click();
-        return product;
     }
 
 }
