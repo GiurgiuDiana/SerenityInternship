@@ -47,8 +47,8 @@ public class ShoppingCartSteps {
         Assert.assertTrue(Serenity.sessionVariableCalled(Constants.PROD_FROM_DETAILS_PAGE_VAR_NAME).equals(Serenity.sessionVariableCalled(Constants.PROD_FROM_CART_PAGE_VAR_NAME)));
     }
 
-//    @StepGroup
-//    public void validateProductsAreConsistent(){
-//        addProductToCart();
-//    }
+    @StepGroup
+    public void validateProductsAreConsistent(){
+        addProductToCart();
+    }
 }

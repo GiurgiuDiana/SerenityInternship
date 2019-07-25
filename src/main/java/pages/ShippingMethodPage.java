@@ -50,9 +50,18 @@ public class ShippingMethodPage extends PageObject {
     private int shippingChoice;
     private double shippingPrice = 0;
 
-    public String getShippingMessage() {
-        shippingMessage.waitUntilVisible();
-        String message = shippingMessage.getText().replace("\n", ", ");
+    public String getShippingMessage() throws InterruptedException {
+        String message = null;
+        for (int i = 0; i < 20; i++) {
+            try {
+                shippingMessage.isVisible();
+                message = shippingMessage.getText().replace("\n", ", ");
+                break;
+            } catch (
+                    ElementNotVisibleException e) {
+                Thread.sleep(1000);
+            }
+        }
         //String[] mess=message.split("\n");
         //String endMessage=mess[0]+","+mess[1];
         return message;

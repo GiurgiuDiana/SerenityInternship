@@ -7,8 +7,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import steps.CheckoutAsUserSteps;
-import steps.LoginSteps;
+import steps.*;
 
 import static com.ibm.icu.impl.ValidIdentifiers.Datatype.u;
 @RunWith(SerenityParameterizedRunner.class)
@@ -20,7 +19,14 @@ public class CheckoutAsDifferentUsersDataDrivenVersion{
     @Steps
     public LoginSteps loginSteps;
 
+    @Steps
+    public SearchPageSteps searchPageSteps;
 
+    @Steps
+    public ProductListSteps productListSteps;
+
+    @Steps
+    public ProductDetailsSteps productDetailsSteps;
     @Steps
     private CheckoutAsUserSteps checkoutAsUserSteps;
 
@@ -31,10 +37,12 @@ public class CheckoutAsDifferentUsersDataDrivenVersion{
     @Test
     public void checkoutAsLoggedInUser() throws Exception {
         webDriver.manage().window().maximize();
-        loginSteps.isOnHomepage();
-        loginSteps.reachLoginFromHomepage();
-        loginSteps.shouldBeOnTheLoginPage();
-        loginSteps.fillingLoginRequiredFields(userEmail, password);
+        loginSteps.performLogin(userEmail,password);
+        searchPageSteps.fillingSearchField();
+        productListSteps.chooseRandomProduct();
+        productListSteps.navigateToRandomProduct();
+        productDetailsSteps.performProductDetailsSelection();
+        productDetailsSteps.clickAddToCart();
         loginSteps.goToCheckoutPage();
         checkoutAsUserSteps.fillBillingInformation();
         checkoutAsUserSteps.fillShippingInformation();

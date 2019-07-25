@@ -4,6 +4,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import tools.Constants;
 
@@ -38,9 +39,14 @@ public class BillingPage extends PageObject {
 
     public void setSelectBillingAddress(int index) {
         selectBillingAddress.get(index).click();
-        List<String>saddress=selectBillingAddress.get(index).getSelectOptions();
-        address=saddress.get(2);
-        System.out.println(address);
+        List<String> saddress = selectBillingAddress.get(index).getSelectOptions();
+        address=selectBillingAddress.get(index).getSelectedVisibleTextValue();
+//        for (WebElementFacade elem : selectBillingAddress) {
+//            if (elem.isSelected())
+//            {
+//                address=elem.getText();
+//            }
+//        }
     }
 
     public void selectShippingAddress(int index) {
