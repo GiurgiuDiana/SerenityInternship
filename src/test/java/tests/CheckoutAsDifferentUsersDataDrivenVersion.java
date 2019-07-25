@@ -9,10 +9,9 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import steps.*;
 
-import static com.ibm.icu.impl.ValidIdentifiers.Datatype.u;
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value="src/test/resources/CSVfiles/Checkout.csv")
-public class CheckoutAsDifferentUsersDataDrivenVersion{
+@UseTestDataFrom(value = "src/test/resources/CSVfiles/Checkout.csv")
+public class CheckoutAsDifferentUsersDataDrivenVersion {
     @Managed(uniqueSession = true)
     private WebDriver webDriver;
 
@@ -37,7 +36,7 @@ public class CheckoutAsDifferentUsersDataDrivenVersion{
     @Test
     public void checkoutAsLoggedInUser() throws Exception {
         webDriver.manage().window().maximize();
-        loginSteps.performLogin(userEmail,password);
+        loginSteps.performLogin(userEmail, password);
         searchPageSteps.fillingSearchField();
         productListSteps.chooseRandomProduct();
         productListSteps.navigateToRandomProduct();

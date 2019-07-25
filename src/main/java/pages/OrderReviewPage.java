@@ -22,14 +22,14 @@ public class OrderReviewPage extends PageObject {
     @FindBy(css = "[title='Place Order']")
     private WebElementFacade buttonPlaceOrder;
 
-    @FindBy(css="#checkout-review-table .product-name")
+    @FindBy(css = "#checkout-review-table .product-name")
     List<WebElementFacade> productNameList;
 
-    @FindBy(css="td[data-rwd-label=\"Price\"]")
-    List<WebElementFacade>productPriceList;
+    @FindBy(css = "td[data-rwd-label=\"Price\"]")
+    List<WebElementFacade> productPriceList;
 
-    @FindBy(css="td[data-rwd-label=\"Qty\"]")
-    List<WebElementFacade>productQtylist;
+    @FindBy(css = "td[data-rwd-label=\"Qty\"]")
+    List<WebElementFacade> productQtylist;
 
     public WebElementFacade getShippingPriceCheck() {
         return shippingPriceCheck;
@@ -43,15 +43,13 @@ public class OrderReviewPage extends PageObject {
         buttonPlaceOrder.click();
     }
 
-    public List<Product>productOrderReviewList()
-    {
-        List<Product>productList = new ArrayList<>();
-        Product pr= new Product();
-        for(int i=0; i<productNameList.size();i++)
-        {
+    public List<Product> productOrderReviewList() {
+        List<Product> productList = new ArrayList<>();
+        Product pr = new Product();
+        for (int i = 0; i < productNameList.size(); i++) {
             pr.setName(productNameList.get(i).getText());
-            pr.setPrice(Utils.convertPriceToDouble(productPriceList.get(i).getText().replace("$","").replace(".","")));
-            pr.setQuantity( Integer.parseInt(productQtylist.get(i).getText()));
+            pr.setPrice(Utils.convertPriceToDouble(productPriceList.get(i).getText().replace("$", "").replace(".", "")));
+            pr.setQuantity(Integer.parseInt(productQtylist.get(i).getText()));
             System.out.println((productQtylist.get(i).getText()));
 //            System.out.println(pr.getName()+pr.getPrice()+pr.getQuantity());
             productList.add(pr);
@@ -60,27 +58,24 @@ public class OrderReviewPage extends PageObject {
     }
 
     public List<String> getProductNameList() {
-        List<String>productNames= new ArrayList<>();
-        for(WebElementFacade iterate:  productNameList)
-        {
+        List<String> productNames = new ArrayList<>();
+        for (WebElementFacade iterate : productNameList) {
             productNames.add(iterate.getText());
         }
         return productNames;
     }
 
     public List<Double> getProductPriceList() {
-        List<Double>productPrices=new ArrayList<>();
-        for(WebElementFacade iterate : productPriceList)
-        {
-            productPrices.add(Utils.convertPriceToDouble(iterate.getText().replace("$","").replace(".","")));
+        List<Double> productPrices = new ArrayList<>();
+        for (WebElementFacade iterate : productPriceList) {
+            productPrices.add(Utils.convertPriceToDouble(iterate.getText().replace("$", "").replace(".", "")));
         }
         return productPrices;
     }
 
     public List<Integer> getProductQtylist() {
-        List<Integer>productQuantity= new ArrayList<>();
-        for(WebElementFacade iterate: productQtylist)
-        {
+        List<Integer> productQuantity = new ArrayList<>();
+        for (WebElementFacade iterate : productQtylist) {
             productQuantity.add(Integer.parseInt(iterate.getText()));
         }
         return productQuantity;

@@ -11,7 +11,7 @@ public class BaseTest {
     public WebDriver webdriver;
 
     @Before
-    public void setup(){
+    public void setup() {
         webdriver.manage().window().maximize();
         webdriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }

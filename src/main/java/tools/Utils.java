@@ -12,20 +12,20 @@ public class Utils {
 
     private static Integer randomNumber;
 
-    public static void displayList(List<WebElementFacade> list){
-        for(WebElementFacade element: list){
+    public static void displayList(List<WebElementFacade> list) {
+        for (WebElementFacade element : list) {
             System.out.println(element.getText());
         }
     }
 
-    public static Double convertPriceToDouble(String priceString){
+    public static Double convertPriceToDouble(String priceString) {
         Double priceDouble = Double.parseDouble(priceString.substring(1));
         return priceDouble;
     }
 
-    public static int getRandomQuantity(){
+    public static int getRandomQuantity() {
         int random = new Random().nextInt(5);
-        return random+1;
+        return random + 1;
     }
 
     public static Product getProductInList() {

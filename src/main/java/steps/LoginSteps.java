@@ -60,7 +60,7 @@ public class LoginSteps {
     }
 
     @StepGroup
-    public void performLogin(){
+    public void performLogin() {
         isOnHomepage();
         reachLoginFromHomepage();
         fillingLoginRequiredFields();

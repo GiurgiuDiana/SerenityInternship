@@ -4,7 +4,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
 
 @DefaultUrl("http://qa1.dev.evozon.com/")
 public class HeaderPage extends PageObject {
@@ -25,13 +24,13 @@ public class HeaderPage extends PageObject {
     @FindBy(css = "#search")
     private WebElementFacade searchField;
 
-    @FindBy(css=".header-minicart >a")
+    @FindBy(css = ".header-minicart >a")
     private WebElementFacade minicartButton;
 
-    @FindBy(css=".button.checkout-button")
+    @FindBy(css = ".button.checkout-button")
     private WebElementFacade minicartCheckoutButton;
 
-    @FindBy(css=".minicart-wrapper")
+    @FindBy(css = ".minicart-wrapper")
     private WebElementFacade minicartMenu;
 
     public void clickOnAccountButton() {
@@ -51,20 +50,18 @@ public class HeaderPage extends PageObject {
         searchField.sendKeys(message + "\n");
     }
 
-    public  void clickOnMinicartButton()
-    {
+    public void clickOnMinicartButton() {
         minicartButton.click();
     }
-    public void waitForMinicartMenuToAppear()
-    {
+
+    public void waitForMinicartMenuToAppear() {
         minicartMenu.waitUntilVisible();
     }
-    public void clickMinicartCheckout()
-    {
-        if(minicartCheckoutButton.isDisplayed())
-        {  minicartCheckoutButton.click();}
-        else
-        {
+
+    public void clickMinicartCheckout() {
+        if (minicartCheckoutButton.isDisplayed()) {
+            minicartCheckoutButton.click();
+        } else {
             ///add a product to cart
             minicartMenu.click();
             minicartMenu.findBy("[title='Log Out']").waitUntilVisible();
@@ -72,8 +69,8 @@ public class HeaderPage extends PageObject {
 
         }
     }
-    public void goToCheckoutPage()
-    {
+
+    public void goToCheckoutPage() {
         clickOnMinicartButton();
         waitForMinicartMenuToAppear();
         clickMinicartCheckout();

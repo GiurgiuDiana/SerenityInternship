@@ -2,16 +2,13 @@ package pages;
 
 import models.ConfigurableProduct;
 import models.Product;
-import models.ProductsInCart;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchContextException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
-import net.thucydides.core.pages.PageObject;
-
-import java.util.List;
 
 @DefaultUrl("http://qa1.dev.evozon.com/checkout/cart/")
 public class ShoppingCartPage extends PageObject {
@@ -53,8 +50,8 @@ public class ShoppingCartPage extends PageObject {
         return colorOfLastProduct;
     }
 
-    public WebElementFacade initSize(){
-        try{
+    public WebElementFacade initSize() {
+        try {
             sizeOfLastProduct = configurableProductItemOptions.findBy(By.cssSelector("tr.last.odd .item-options > dt:nth-child(3)"));
         } catch (NoSuchElementException e) {
             System.out.println("product does not have sizes");
@@ -76,7 +73,7 @@ public class ShoppingCartPage extends PageObject {
         return cartProduct;
     }
 
-    public Product createConfigurableProductFromCart(){
+    public Product createConfigurableProductFromCart() {
         ConfigurableProduct cartProduct = new ConfigurableProduct(nameOfLastProduct.getText(), Double.parseDouble(pricePerUnitOfLastProduct.getText().substring(1)), colorOfLastProduct.getText(), sizeOfLastProduct.getText(), Integer.parseInt(quantityOfLastProduct.getText()));
         return cartProduct;
     }

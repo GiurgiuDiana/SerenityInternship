@@ -3,16 +3,14 @@ package pages;
 
 import models.ConfigurableProduct;
 import models.Product;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import tools.Constants;
 import tools.Utils;
-import net.serenitybdd.core.Serenity;
-
 
 import java.util.List;
 
@@ -70,17 +68,15 @@ public class ProductDetailsPage extends PageObject {
 
     public WebElementFacade getProductPrice() {
 
-        try{
+        try {
             productPrice = productDetailsContainer.findBy(By.cssSelector(".price-info"));
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("no regular price found");
         }
 
         try {
             productPrice = productDetailsContainer.findBy(By.cssSelector(".price-info .special-price"));
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("no discounted price found");
         }
         System.out.println(productPrice.getText());
@@ -149,13 +145,12 @@ public class ProductDetailsPage extends PageObject {
         quantityInput.sendKeys(Integer.toString(quantity));
     }
 
-    public void saveProductObject(){
+    public void saveProductObject() {
 
         Product product;
-        if(colorsList.size()==0 && sizeList.size()==0){ //if the product does not have colors or sizes options it means it's not configurable
+        if (colorsList.size() == 0 && sizeList.size() == 0) { //if the product does not have colors or sizes options it means it's not configurable
             product = new Product(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), quantity);
-        }
-        else {
+        } else {
             product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), getColorName().getText(), getSizeName().getText(), quantity);
         }
 
@@ -163,7 +158,7 @@ public class ProductDetailsPage extends PageObject {
 
     }
 
-    public void clickAddToCart(){
+    public void clickAddToCart() {
         addToCartButton.click();
     }
 
