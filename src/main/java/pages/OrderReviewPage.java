@@ -42,6 +42,7 @@ public class OrderReviewPage extends PageObject {
     public void pressPlaceOrder() {
         buttonPlaceOrder.click();
     }
+
     public List<Product>productOrderReviewList()
     {
         List<Product>productList = new ArrayList<>();
@@ -60,23 +61,28 @@ public class OrderReviewPage extends PageObject {
 
     public List<String> getProductNameList() {
         List<String>productNames= new ArrayList<>();
-        for(WebElementFacade ww:  productNameList)
+        for(WebElementFacade iterate:  productNameList)
         {
-            productNames.add(ww.getText());
+            productNames.add(iterate.getText());
         }
         return productNames;
     }
 
-//    public List<Double> getProductPriceList() {
-//        List<Double>productPrices=new ArrayList<>();
-//        for(WebElementFacade ww : productPriceList)
-//        {
-//            productPrices.add()
-//        }
-//        return productPriceList;
-//    }
-//
-//    public List<Integer> getProductQtylist() {
-//        return productQtylist;
-//    }
+    public List<Double> getProductPriceList() {
+        List<Double>productPrices=new ArrayList<>();
+        for(WebElementFacade iterate : productPriceList)
+        {
+            productPrices.add(Utils.convertPriceToDouble(iterate.getText().replace("$","").replace(".","")));
+        }
+        return productPrices;
+    }
+
+    public List<Integer> getProductQtylist() {
+        List<Integer>productQuantity= new ArrayList<>();
+        for(WebElementFacade iterate: productQtylist)
+        {
+            productQuantity.add(Integer.parseInt(iterate.getText()));
+        }
+        return productQuantity;
+    }
 }
