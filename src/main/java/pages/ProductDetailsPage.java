@@ -133,8 +133,6 @@ public class ProductDetailsPage extends PageObject {
 
         try {
             sizeList = productDetailsContainer.thenFindAll(By.cssSelector("#configurable_swatch_shoe_size>li:not(.not-available)"));
-            //System.out.println("finding the size list for shoes");
-            //System.out.println(sizeList.size());
             if (sizeList.size() > 0) {
                 isShoe = true;
             }
