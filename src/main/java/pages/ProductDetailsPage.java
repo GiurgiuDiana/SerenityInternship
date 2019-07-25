@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
+import tools.Constants;
 import tools.Utils;
 import net.serenitybdd.core.Serenity;
 
@@ -133,8 +134,6 @@ public class ProductDetailsPage extends PageObject {
 
         try {
             sizeList = productDetailsContainer.thenFindAll(By.cssSelector("#configurable_swatch_shoe_size>li:not(.not-available)"));
-            //System.out.println("finding the size list for shoes");
-            //System.out.println(sizeList.size());
             if (sizeList.size() > 0) {
                 isShoe = true;
             }
@@ -160,7 +159,7 @@ public class ProductDetailsPage extends PageObject {
             product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), getColorName().getText(), getSizeName().getText(), quantity);
         }
 
-        Serenity.setSessionVariable("product added to cart").to(product);
+        Serenity.setSessionVariable(Constants.ADDED_PROD_FROM_DETAILS_PAGE_VAR_NAME).to(product);
 
     }
 

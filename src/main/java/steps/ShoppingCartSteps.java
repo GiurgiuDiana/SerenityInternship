@@ -22,10 +22,10 @@ public class ShoppingCartSteps {
         productDetailsPage.open();
     }
 
-//    @Step
-//    public void addProductToCart(){
-//        Serenity.setSessionVariable(Constants.PROD_FROM_DETAILS_PAGE_VAR_NAME).to(productDetailsPage.addToCart());
-//    }
+    @Step
+    public void addProductToCart(){
+        productDetailsPage.clickAddToCart();
+    }
 
     @Step
     public void shouldBeOnTheShoppingCartPage(){

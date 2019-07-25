@@ -53,11 +53,12 @@ public class AddToCartTest extends BaseTest{
 
     }
 
-//    @Test
-//    public void validateProductDataFromDetailsPageAndCart(){
-//        searchPageSteps.performProductSearch();
-//        productListSteps.navigateToRandomProduct();
-//        productDetailsSteps.performProductDetailsSelection();
-//        shoppingCartSteps.validateProductsAreConsistent();
-//    }
+    @Test
+    public void validateProductDataFromDetailsPageAndCart(){
+        searchPageSteps.performProductSearch();
+        productListSteps.chooseRandomProduct();
+        productListSteps.navigateToRandomProduct();
+        productDetailsSteps.performProductDetailsSelection();
+        shoppingCartSteps.validateProductsAreConsistent();
+    }
 }
