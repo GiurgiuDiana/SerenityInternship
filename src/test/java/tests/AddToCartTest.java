@@ -43,11 +43,15 @@ public class AddToCartTest extends BaseTest{
         searchPageSteps.isOnHomepage();
         searchPageSteps.fillingSearchField();
         searchPageSteps.shouldBeOnSearchResultsPage();
+        productListSteps.chooseRandomProduct();
+        productListSteps.saveChosenProduct();
         productListSteps.navigateToRandomProduct();
         productDetailsSteps.clickRandomColor();
         productDetailsSteps.clickRandomSize();
         productDetailsSteps.setRandomQuantity();
+        productDetailsSteps.saveProductAsObject();
         productDetailsSteps.clickAddToCart();
+        productDetailsSteps.verifyProductAdded();
 
     }
 }

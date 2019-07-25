@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import tools.Utils;
+import net.serenitybdd.core.Serenity;
 
 
 import java.util.List;
@@ -158,11 +159,6 @@ public class ProductDetailsPage extends PageObject {
 
     public void saveProductObject(){
 
-    }
-
-    public Product addToCart(){
-        //System.out.println(colorsList.size());
-        //System.out.println(sizeList.size());
         Product product;
         if(colorsList.size()==0 && sizeList.size()==0){ //if the product does not have colors or sizes options it means it's not configurable
             product = new Product(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), quantity);
@@ -170,9 +166,13 @@ public class ProductDetailsPage extends PageObject {
         else {
             product = new ConfigurableProduct(productName.getText(), Utils.convertPriceToDouble(getProductPrice().getText()), getColorName().getText(), getSizeName().getText(), quantity);
         }
-        //System.out.println(product.toString());
+
+        Serenity.setSessionVariable("product added to cart").to(product);
+
+    }
+
+    public void clickAddToCart(){
         addToCartButton.click();
-        return product;
     }
 
 }

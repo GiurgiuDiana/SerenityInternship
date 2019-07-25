@@ -1,12 +1,14 @@
 package steps;
 
 import models.Product;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.junit.Assert;
 import pages.ProductDetailsPage;
 import tools.RandomElementClicker;
 import tools.Utils;
+import net.serenitybdd.core.Serenity;
 
 import java.util.List;
 
@@ -47,17 +49,25 @@ public class ProductDetailsSteps {
         name = productDetailsPage.getProductName().getText();
         System.out.println(name);
     }
+    @Step
+    public void saveProductAsObject(){
+        productDetailsPage.saveProductObject();
+    }
 
     @Step
     public void clickAddToCart(){
-        Product productInCart = productDetailsPage.addToCart();
-        Product productInList = Utils.getProductInList();
-        System.out.println(productInCart.toString());
+        productDetailsPage.clickAddToCart();
+    }
+
+    @Step
+    public void verifyProductAdded(){
+        Product productAddedToCart = Serenity.sessionVariableCalled("product added to cart");
+        Product productInList = Serenity.sessionVariableCalled("product chosen from list");
+        System.out.println(productAddedToCart.toString());
         System.out.println("========================================");
         System.out.println(productInList.toString());
-        Assert.assertTrue(productInCart.getName().equals(productInList.getName()));
-        Assert.assertTrue(productInCart.getPrice() .equals(productInList.getPrice()));
-
+        Assert.assertTrue(productAddedToCart.getName().equals(productInList.getName()));
+        Assert.assertTrue(productAddedToCart.getPrice() .equals(productInList.getPrice()));
     }
 
     @Step

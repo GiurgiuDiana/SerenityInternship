@@ -26,7 +26,17 @@ public class ProductListSteps {
 
     @Step
     public void navigateToRandomProduct() {
-        productListPage.goToRandomProductPage();
+        productListPage.goToChosenProductPage();
+    }
+
+    @Step
+    public void saveChosenProduct(){
+        productListPage.saveChosenProduct();
+    }
+
+    @Step
+    public void chooseRandomProduct(){
+        productListPage.chooseRandomProduct();
     }
 
 }
