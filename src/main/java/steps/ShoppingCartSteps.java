@@ -35,19 +35,25 @@ public class ShoppingCartSteps {
     public void extractingLastProductDetails() {
         boolean isSimple = shoppingCartPage.isSimpleProduct();
         if (isSimple) {
-            Serenity.setSessionVariable(Constants.PROD_FROM_CART_PAGE_VAR_NAME).to(shoppingCartPage.createSimpleProductFromCart());
+            System.out.println("Simple product");
+//            Serenity.setSessionVariable(Constants.PROD_FROM_CART_PAGE_VAR_NAME).to(shoppingCartPage.createSimpleProductFromCart());
         } else {
-            Serenity.setSessionVariable(Constants.PROD_FROM_CART_PAGE_VAR_NAME).to(shoppingCartPage.createConfigurableProductFromCart());
+            System.out.println("Configuarble product");
+//            Serenity.setSessionVariable(Constants.PROD_FROM_CART_PAGE_VAR_NAME).to(shoppingCartPage.createConfigurableProductFromCart());
         }
     }
 
     @Step
     public void compareProductFromCartToDetailsPage() {
-        Assert.assertTrue(Serenity.sessionVariableCalled(Constants.PROD_FROM_DETAILS_PAGE_VAR_NAME).equals(Serenity.sessionVariableCalled(Constants.PROD_FROM_CART_PAGE_VAR_NAME)));
+        System.out.println(Serenity.sessionVariableCalled(Constants.ADDED_PROD_FROM_DETAILS_PAGE_VAR_NAME).toString());
+        System.out.println(Serenity.sessionVariableCalled(Constants.PROD_FROM_CART_PAGE_VAR_NAME).toString());
+        Assert.assertTrue(Serenity.sessionVariableCalled(Constants.ADDED_PROD_FROM_DETAILS_PAGE_VAR_NAME).equals(Serenity.sessionVariableCalled(Constants.PROD_FROM_CART_PAGE_VAR_NAME)));
     }
 
     @StepGroup
     public void validateProductsAreConsistent() {
-        addProductToCart();
+        shouldBeOnTheShoppingCartPage();
+//        extractingLastProductDetails();
+        compareProductFromCartToDetailsPage();
     }
 }

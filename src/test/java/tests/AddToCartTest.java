@@ -60,6 +60,8 @@ public class AddToCartTest extends BaseTest{
         productListSteps.chooseRandomProduct();
         productListSteps.navigateToRandomProduct();
         productDetailsSteps.performProductDetailsSelection();
-        shoppingCartSteps.validateProductsAreConsistent();
+        productDetailsSteps.clickAddToCart();
+        shoppingCartSteps.extractingLastProductDetails();
+//        shoppingCartSteps.validateProductsAreConsistent();
     }
 }
