@@ -17,7 +17,7 @@ public class ShippingMethodPage extends PageObject {
     @FindBy(css = "label[for='s_method_freeshipping_freeshipping']")
     private WebElementFacade radioButtonFreeShipping;
 
-    @FindBy(css = "#s_method_flatrate_flatrate")
+    @FindBy(css = "label[for='s_method_flatrate_flatrate']")
     private WebElementFacade radioButtonFlateRateShipping;
 
     @FindBy(css = "#checkout-step-shipping_method")
@@ -85,9 +85,11 @@ public class ShippingMethodPage extends PageObject {
                     shippingChoice = Constants.FREE_SHIPPINNG_CHOICE;
                     break;
                 } else {
-                    radioButtonFlateRateShipping.click();
-                    shippingChoice = Constants.FLATRATE_SHIPPINNG_CHOICE;
-                    shippingPrice = Utils.convertPriceToDouble(flatrateShippingPrice.getText().replace("$", "").replace(".", ""));
+                    if (radioButtonFlateRateShipping.isClickable()) {
+                        radioButtonFlateRateShipping.click();
+                        shippingChoice = Constants.FLATRATE_SHIPPINNG_CHOICE;
+                        shippingPrice = Utils.convertPriceToDouble(flatrateShippingPrice.getText().replace("$", "").replace(".", ""));
+                    }
                     break;
                 }
             } catch (ElementNotInteractableException e) {

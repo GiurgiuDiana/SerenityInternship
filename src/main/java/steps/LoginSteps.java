@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 import pages.HeaderPage;
 import pages.LoginPage;
+import pages.MyAccountPage;
 import tools.Constants;
 
 public class LoginSteps {
@@ -15,6 +16,7 @@ public class LoginSteps {
 
     private HeaderPage headerPage;
     private LoginPage loginPage;
+    private MyAccountPage myAccountPage;
 
     @Step
     public void isOnHomepage() {
@@ -70,4 +72,11 @@ public class LoginSteps {
     public void goToCheckoutPage() {
         headerPage.goToCheckoutPage();
     }
+
+    @Step
+    public boolean checkTheBillingInfoEqualsShippingInfo() {
+        return myAccountPage.defaultBillingInformationFromMyAccount().equalsIgnoreCase(myAccountPage.defaultShippingInformationFromMyAccount());
+    }
+
+
 }

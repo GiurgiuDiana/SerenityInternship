@@ -4,6 +4,7 @@ import models.Product;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.support.FindBy;
 import tools.Utils;
 
@@ -31,7 +32,16 @@ public class OrderReviewPage extends PageObject {
     @FindBy(css = "td[data-rwd-label=\"Qty\"]")
     List<WebElementFacade> productQtylist;
 
-    public WebElementFacade getShippingPriceCheck() {
+    public WebElementFacade getShippingPriceCheck() throws InterruptedException {
+        for (int i = 0; i < 20; i++) {
+            try {
+                if (shippingPriceCheck.isDisplayed()) {
+                    break;
+                }
+            } catch (ElementNotInteractableException e) {
+                Thread.sleep(1000);
+            }
+        }
         return shippingPriceCheck;
     }
 
@@ -40,6 +50,7 @@ public class OrderReviewPage extends PageObject {
     }
 
     public void pressPlaceOrder() {
+        buttonPlaceOrder.waitUntilVisible();
         buttonPlaceOrder.click();
     }
 
